@@ -2,8 +2,7 @@ import commonfunctions as cf
 import json
 import os
 from textblob import TextBlob
-import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 directory = 'transcripts-10thDec'
 
@@ -67,7 +66,7 @@ for year in uniqueYears:
 
     # Take a simple mean of the sentiments of all texts in a given year.
     # Add this to the list uniqueSentiments, which is paired with the uniqueYears list.
-    uniqueSentiments.append(np.mean(sentimentsForYear))
+    uniqueSentiments.append(cf.mean(sentimentsForYear))
 
 plt.plot(uniqueYears, uniqueSentiments, 'ro')
 plt.xlabel('Year')

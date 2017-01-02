@@ -120,7 +120,7 @@ for year in uniqueYears:
     # Take a simple mean of the simplicity of all texts in a given year.
     # Add this to the list uniquesimplewords, which is paired with the uniqueYears list.
 
-    uniquesimplewords.append(np.mean(simplewordsforyear))
+    uniquesimplewords.append(cf.mean(simplewordsforyear))
 
 # The graph plots on the Y axis the relative amount of common nouns
 

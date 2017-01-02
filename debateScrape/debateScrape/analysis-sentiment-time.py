@@ -8,11 +8,6 @@ import os
 import plotly.plotly as py
 import nltk
 
-
-def mean(someList):
-    assert type(someList) == list or type(someList) == tuple
-    return sum(someList)/len(someList)
-
 wnl = nltk.WordNetLemmatizer()
 
 directory = cf.working_directory
@@ -134,9 +129,9 @@ for uniqueYear in uniqueYears:
     # Take a simple mean of the sentiments of all texts in a given year.
     # Add this to the list uniqueSentiments, which is paired with the uniqueYears list.
 
-    uniquepositivewords.append(mean(positivewordsforyear))
+    uniquepositivewords.append(cf.mean(positivewordsforyear))
 
-    uniquenegativewords.append(mean(negativewordsforyear))
+    uniquenegativewords.append(cf.mean(negativewordsforyear))
 
 py.plot([{
     'x': uniqueYears,

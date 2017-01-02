@@ -1,19 +1,5 @@
-import datetime as dt
 from scrapy.selector import Selector
-
-# Some common functions which are used by other programs.
-
-
-def list_to_item(any_list):
-    for item in any_list:
-        return item
-
-
-def iso_to_datetime(iso_string):
-    year = int(iso_string[0:4])
-    month = int(iso_string[5:7])
-    day = int(iso_string[8:10])
-    return dt.date(year, month, day)
+import commonfunctions as cf
 
 
 # This class is a custom version of scrapy's Selector class
@@ -23,7 +9,7 @@ class TranscriptSelector(Selector):
     def get_debate_date(self):
         date = self.xpath("//span[@class='docdate']/text()").extract()
 
-        debate_date = list_to_item(date)
+        debate_date = cf.list_to_item(date)
 
         # The date is not in a useful format, so let's change that.
         # Some uninteresting code to do that is below.
