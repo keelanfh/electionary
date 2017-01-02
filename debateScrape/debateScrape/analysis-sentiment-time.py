@@ -1,4 +1,7 @@
 from __future__ import division
+from string import punctuation
+from string import digits
+import urllib
 import commonfunctions as cf
 import json
 import os
@@ -7,9 +10,6 @@ import matplotlib.pyplot as plt
 import nltk
 
 wnl = nltk.WordNetLemmatizer()
-from string import punctuation
-from string import digits
-import urllib
 
 directory = cf.working_directory
 
@@ -49,9 +49,9 @@ for myFile in filesList:
         transcript = json.load(f)
     transcripts.append(transcript)
 
-# Create lists for the years and the lengh of the text for each year.
+# Create lists for the years and the length of the text for each year.
 years = []
-length = []
+lengths = []
 
 # Go through each transcript
 for transcript in transcripts:
@@ -66,9 +66,10 @@ for transcript in transcripts:
 
     # Add all the text spoken by speakers to that string
     for speaker in transcript['text_by_speakers']:
+
         allText += (" " + speaker['text'])
 
-        # removes puctuation, digits, splits text into words
+        # removes punctuation, digits, splits text into words
         # remove words shorter than 3 characters and suffixes
 
         for p in list(punctuation):
@@ -83,15 +84,8 @@ for transcript in transcripts:
 
         text = [wnl.lemmatize(t) for t in long_words]
 
-    # counts number of words of the texts
-    # adds the count to the list length
-
-    word_count = 0
-    for word in text:
-        word_count += 1
-
-    length.append(word_count)
-    print length
+    word_count = len(text)
+    lengths.append(word_count)
 
     # count positive and negative words
     positive_counter = 0
@@ -100,18 +94,15 @@ for transcript in transcripts:
     for word in text:
         if word in positive_words:
             positive_counter += 1
-    total_pos_words = positive_counter
-
-    positive_counts.append(total_pos_words)
-    print positive_counts
-
-    for word in text:
-        if word in negative_words:
+        elif word in negative_words:
             negative_counter += 1
+    total_pos_words = positive_counter
     total_neg_words = negative_counter
 
+    positive_counts.append(total_pos_words)
     negative_counts.append(total_neg_words)
 
+    print year
 
 # Get a unique list of the years
 uniqueYears = list(set(years))
@@ -121,19 +112,20 @@ uniquepositivewords = []
 uniquenegativewords = []
 
 # For each unique year
-for year in uniqueYears:
+for uniqueYear in uniqueYears:
+    print uniqueYear
     # Create a list which will contain all sentiment values for a year
     positivewordsforyear = []
     negativewordsforyear = []
 
     # Go through all the different years, adding the sentiment to that list.
-    for number in range(len(years)):
-        if years[number] == year:
-            positivewordsforyear.append(positive_counts[number] / length[number])
+    for number, year in enumerate(years):
+        if year == uniqueYear:
+            positivewordsforyear.append(positive_counts[number] / lengths[number])
 
-    for number in range(len(years)):
-        if years[number] == year:
-            negativewordsforyear.append(negative_counts[number] / length[number])
+    for number, year in enumerate(years):
+        if year == uniqueYear:
+            negativewordsforyear.append(negative_counts[number] / lengths[number])
 
     # Take a simple mean of the sentiments of all texts in a given year.
     # Add this to the list uniqueSentiments, which is paired with the uniqueYears list.
@@ -142,10 +134,9 @@ for year in uniqueYears:
 
     uniquenegativewords.append(np.mean(negativewordsforyear))
 
-# This creates two graphs, but the only one is shown with the data for both positive and negative words.
-# I don't know why this happens.....
+# This creates two graphs, but only one is shown with the data for both positive and negative words.
+# I don't know why this happens...
 # Red is positive and blue is negative
-
 
 plt.plot(uniqueYears, uniquepositivewords, 'ro')
 plt.xlabel('Year')
