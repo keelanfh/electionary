@@ -3,6 +3,7 @@ from scrapy.selector import Selector
 
 # Some common functions which are used by other programs.
 
+
 def list_to_item(any_list):
     for item in any_list:
         return item

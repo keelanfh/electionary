@@ -350,6 +350,7 @@ def process_html_file(html_file):
 
     # Uncomment the line below these comments if you want to output text files.
     # This can be useful for debugging how well it is working.
+
     # create_text_file(debate_date_iso, debate_name, sentence_dicts)
 
     # CODE TO OUTPUT JSON FILES FOR THE TRANSCRIPTS

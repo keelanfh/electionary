@@ -19,16 +19,16 @@ def text_to_datetime(date_string):
     return dt.datetime(year=2016, month=month, day=int(day), hour=int(hour), minute=int(minute), second=int(second))
 
 
-with open('trumpStatusesSample.json', 'r') as f:
+with open('trumpStatuses.json', 'r') as f:
     trumpStatuses = json.load(f)
 
 timesList = []
 
 for status in trumpStatuses:
     print status['text']
-    print status['created_at']
-    dtDate = text_to_datetime(status['created_at'])
-    print dtDate.isoformat()
+    # print status['created_at']
+    # dtDate = text_to_datetime(status['created_at'])
+    # print dtDate.isoformat()
 
 
     # Plot a histogram
