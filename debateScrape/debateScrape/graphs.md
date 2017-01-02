@@ -2,4 +2,4 @@
 
 ##Sentiment over time
 ![Sentiment over time]
-(./analyis-sentiment-time.svg)
+(./analysis-sentiment-time.svg)
