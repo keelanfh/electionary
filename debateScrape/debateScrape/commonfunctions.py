@@ -1,6 +1,7 @@
 import datetime as dt
 import sys
 
+working_directory = 'transcripts-21stDec'
 
 def mean(any_list):
     assert type(any_list) == list or type(any_list) == tuple

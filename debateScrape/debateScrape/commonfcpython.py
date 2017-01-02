@@ -35,4 +35,3 @@ class TranscriptSelector(Selector):
         for name in name:
             return name
 
-working_directory = 'transcripts-21stDec'
