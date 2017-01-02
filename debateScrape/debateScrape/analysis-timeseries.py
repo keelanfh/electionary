@@ -2,9 +2,9 @@ import commonfunctions as cf
 import json
 import os
 from textblob import TextBlob
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
-directory = 'transcripts-10thDec'
+directory = cf.working_directory
 
 # Just an example of the kind of analysis that can be done
 # This does a sentiment analysis on the text by year using TextBlob

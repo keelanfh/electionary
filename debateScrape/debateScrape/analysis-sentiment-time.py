@@ -8,6 +8,7 @@ import os
 import plotly.plotly as py
 import plotly.graph_objs as go
 import nltk
+import sys
 
 wnl = nltk.WordNetLemmatizer()
 
