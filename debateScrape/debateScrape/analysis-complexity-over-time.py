@@ -12,7 +12,8 @@ wnl = nltk.WordNetLemmatizer()
 
 # This code compares the debate transcripts with the 1000 most common nouns used in the (US) English language.
 # Counts the matches and displays them by year on a graph.
-# I am sure the code has many errors that can be improved (for example not taking into account the moderators' interventions)
+# I am sure the code has many errors that can be improved
+# (for example not taking into account the moderators' interventions)
 # But the results seem to match with our initial thoughts (trend towards simpler language)
 
 # open the file with the 1000 most common nouns in US English
