@@ -6,6 +6,7 @@ import commonfunctions as cf
 import json
 import os
 import plotly.plotly as py
+import plotly.graph_objs as go
 import nltk
 
 wnl = nltk.WordNetLemmatizer()
@@ -58,6 +59,7 @@ for transcript in transcripts:
     # Get the date - converting the ISO date back into a datetime.date object
     date = cf.iso_to_datetime(transcript['date'])
     year = date.year
+
     years.append(year)
 
     # Create a string for all of the text in the debate
@@ -133,6 +135,38 @@ for uniqueYear in uniqueYears:
 
     uniquenegativewords.append(cf.mean(negativewordsforyear))
 
-py.plot([{
-    'x': uniqueYears,
-    'y': uniquepositivewords},{'x':uniqueYears, 'y': uniquenegativewords}])
+with open('analysis-sentiment-time.json', 'w') as f:
+    json.dump(dict(uniquenegativewords=uniquenegativewords, uniquepositivewords=uniquepositivewords,
+                   uniqueYears=uniqueYears), f)
+
+# IGNORE ALL OF THE CODE BELOW - THIS IS FOR PLOT.LY
+# (which we won't be using - it's incompatible with WordPress...
+
+# pos = go.Scatter(x=uniqueYears, y=uniquepositivewords, mode='lines+markers',
+#                  name='positive', marker={'color': 'rgba(0, 0, 255, 0.95)',
+#                                           'line': {'color': 'rgba(0, 0, 255, 1.0)',
+#                                                    'width': 1}
+#                                           })
+#
+# neg = go.Scatter(x=uniqueYears, y=uniquenegativewords, mode='lines+markers',
+#                  name='negative', marker={'color': 'rgba(255, 0, 0, 0.95)',
+#                                           'line': {'color': 'rgba(255, 0, 0, 1.0)',
+#                                                    'width': 1}
+#                                           })
+#
+# layout = go.Layout(
+#     title='Positive and negative sentiment over time',
+#     hovermode='closest',
+#     xaxis=dict(
+#         title='Year',
+#         zeroline=False,
+#     ),
+#     yaxis=dict(
+#         title='Proportion of words in positive/negative dictionary',
+#     ),
+#     showlegend=True
+# )
+#
+# fig = go.Figure(data=[pos, neg], layout=layout)
+#
+# py.plot([pos, neg], filename='Positive and negative sentiment over time')

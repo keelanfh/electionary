@@ -9,11 +9,11 @@ from string import punctuation
 from string import digits
 import urllib
 
-directory = 'transcripts-10thDec'
+directory = cf.working_directory
 
 # This code creates a graph that shows the frequency of different words over time
-# In this case ive chosen as an example the words: racist, immigration, lation and america
-# Things to be changed: the X axis shoud represent years
+# In this case ive chosen as an example the words: racist, immigration, latino and america
+# Things to be changed: the X axis should represent years
 
 # List all the files in the directory
 filesList = os.listdir(directory)
@@ -65,7 +65,7 @@ for transcript in transcripts:
 
         # Removing punctuation, digits
         # Splitting text into words
-        # Removing short words and sufixes
+        # Removing short words and suffixes
         for p in list(punctuation):
             allText = allText.replace(p, '')
 
