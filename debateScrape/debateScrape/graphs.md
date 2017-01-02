@@ -2,4 +2,4 @@
 
 ##Sentiment over time
 ![Sentiment over time]
-(./analysis-sentiment-time.svg)
+(https://cdn.rawgit.com/keelanfh/the-electionary/master/debateScrape/debateScrape/analysis-sentiment-time.svg)
