@@ -5,9 +5,13 @@ import urllib
 import commonfunctions as cf
 import json
 import os
-import numpy as np
-import matplotlib.pyplot as plt
+# import numpy as np
+# import matplotlib.pyplot as plt
 import nltk
+
+
+def mean(someList):
+    return sum(someList)/len(someList)
 
 wnl = nltk.WordNetLemmatizer()
 
@@ -130,20 +134,24 @@ for uniqueYear in uniqueYears:
     # Take a simple mean of the sentiments of all texts in a given year.
     # Add this to the list uniqueSentiments, which is paired with the uniqueYears list.
 
-    uniquepositivewords.append(np.mean(positivewordsforyear))
+    uniquepositivewords.append(mean(positivewordsforyear))
 
-    uniquenegativewords.append(np.mean(negativewordsforyear))
+    uniquenegativewords.append(mean(negativewordsforyear))
+
+print uniqueYears
+print uniquepositivewords
+print uniquenegativewords
 
 # This creates two graphs, but only one is shown with the data for both positive and negative words.
 # I don't know why this happens...
 # Red is positive and blue is negative
 
-plt.plot(uniqueYears, uniquepositivewords, 'ro')
-plt.xlabel('Year')
-plt.ylabel('Positive Words')
-plt.show()
-
-plt.plot(uniqueYears, uniquenegativewords, 'bo')
-plt.xlabel('Year')
-plt.ylabel('Negative Words')
-plt.show()
+# plt.plot(uniqueYears, uniquepositivewords, 'ro')
+# plt.xlabel('Year')
+# plt.ylabel('Positive Words')
+# plt.show()
+#
+# plt.plot(uniqueYears, uniquenegativewords, 'bo')
+# plt.xlabel('Year')
+# plt.ylabel('Negative Words')
+# plt.show()
