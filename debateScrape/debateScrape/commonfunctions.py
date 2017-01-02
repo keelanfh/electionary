@@ -48,3 +48,5 @@ class TranscriptSelector(Selector):
         name = self.xpath("//span[@class='paperstitle']/text()").extract()
         for name in name:
             return name
+
+working_directory = 'transcripts-21stDec'
