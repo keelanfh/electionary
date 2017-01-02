@@ -19,7 +19,7 @@ wnl = nltk.WordNetLemmatizer()
 # open the file with the 1000 most common nouns in US English
 common_words = open("/Users/laurabravopriegue/transcript-processing/commonwordsenglish.txt").read()
 
-directory = 'transcripts-10thDec'
+directory = cf.working_directory
 
 # List all the files in the directory
 filesList = os.listdir(directory)
@@ -63,21 +63,19 @@ for transcript in transcripts:
         words = allText.split()
 
         # Remove short words (shorter than 3 characters) because they dont usually have much meaning
-        # Lematize the words, removes suffixes (plurals, verb terminations etc)
-
+        # Lemmatize the words, removes suffixes (plurals, verb terminations etc)
 
         long_words = [w for w in words if len(w) > 3]
 
         text = [wnl.lemmatize(t) for t in long_words]
 
-
-        # tagg all words in the text according to what type of word they are (nouns, verbs etc)
+        # tag all words in the text according to what type of word they are (nouns, verbs etc)
         # create a string for nouns
         # filter the nouns and add them to the emptystring
 
 text_tagged = nltk.pos_tag(text)
 
-stringnouns = " "
+stringnouns = ""
 
 for word, pos in text_tagged:
     if (pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS'):
@@ -119,13 +117,12 @@ for year in uniqueYears:
         if years[number] == year:
             simplewordsforyear.append(simplicity[number] / nouns[number])
 
-
-            # Take a simple mean of the simplicity of all texts in a given year.
+    # Take a simple mean of the simplicity of all texts in a given year.
     # Add this to the list uniquesimplewords, which is paired with the uniqueYears list.
 
     uniquesimplewords.append(np.mean(simplewordsforyear))
 
-# The graph plots on the Y axis the relative ammount of common nouns
+# The graph plots on the Y axis the relative amount of common nouns
 
 plt.plot(uniqueYears, uniquesimplewords, 'ro')
 plt.xlabel('Year')
