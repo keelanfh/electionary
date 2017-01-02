@@ -14,12 +14,16 @@ wnl = nltk.WordNetLemmatizer()
 
 directory = cf.working_directory
 
+# I have moved the graph code to a separate file so that the analysis does not have to be re-run every time
+# you change something on the graph. This code can be run through Pypy to make it faster, but all sentiment
+# analysis code is quite slow because of the quantity of data being handled.
+
+# TODO Could be improved, again, removing the interventions of the moderators
+
 # Analysis of the polarity of the transcripts
 # Compares the transcripts with lists of positive and negative words
 # Counts the matches and displays them in a graph
 # Takes ages to run, but maybe that is just in my computer
-# Could be improved, again, removing the interventions of the moderators
-# Also, the name of the Y axis has to be changed and a legend has to be added
 
 # List all the files in the directory
 filesList = os.listdir(directory)

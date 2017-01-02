@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import json
 
+# TODO name of the Y axis has to be changed and a legend has to be added
+
 with open('analysis-sentiment-time.json', 'r') as f:
     data = json.load(f)
 
