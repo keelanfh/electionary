@@ -17,7 +17,7 @@ import commonfunctions as cf
 # By default, the program runs only for a sample of files.
 # To change this, change the following to False.
 runForSample = True
-runForSample = False
+#runForSample = False
 
 # Enter your working directories here:
 

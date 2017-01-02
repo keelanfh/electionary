@@ -3,6 +3,7 @@ import sys
 
 working_directory = 'transcripts-21stDec'
 
+
 def mean(any_list):
     assert type(any_list) == list or type(any_list) == tuple
     return sum(any_list) / len(any_list)
@@ -20,4 +21,4 @@ def iso_to_datetime(iso_string):
     return dt.date(year, month, day)
 
 if not sys.executable.split('/')[-1] == 'pypy':
-    import commonfcpython
+    from commonfcpython import *
