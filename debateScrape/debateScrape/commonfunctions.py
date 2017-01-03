@@ -2,7 +2,7 @@ from __future__ import division
 import datetime as dt
 import sys
 
-working_directory = 'transcripts-21stDec'
+working_directory = 'transcripts-3rdJan'
 
 
 def mean(any_list):

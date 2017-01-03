@@ -75,20 +75,20 @@ for transcript in transcripts:
 
         allText += (" " + speaker['text'])
 
-        # removes punctuation, digits, splits text into words
-        # remove words shorter than 3 characters and suffixes
+    # removes punctuation, digits, splits text into words
+    # remove words shorter than 3 characters and suffixes
 
-        for p in list(punctuation):
-            allText = allText.replace(p, '')
+    for p in list(punctuation):
+        allText = allText.replace(p, '')
 
-        for k in list(digits):
-            allText = allText.replace(k, '')
+    for k in list(digits):
+        allText = allText.replace(k, '')
 
-        words = allText.split()
+    words = allText.split()
 
-        long_words = [w for w in words if len(w) > 3]
+    long_words = [w for w in words if len(w) > 3]
 
-        text = [wnl.lemmatize(t) for t in long_words]
+    text = [wnl.lemmatize(t) for t in long_words]
 
     word_count = len(text)
     lengths.append(word_count)
