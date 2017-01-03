@@ -1,11 +1,13 @@
 import commonfunctions as cf
 import json
+import csv
 import os
+import unicodedata
 
 directory = cf.working_directory
+csvfile = 'json-demrep.csv'
 
-# Produce a list of speakers
-# So that we can find duplicate speaker names
+# Produce CSV for us to sort out democratic and republican nominees
 
 # List all the files in the directory
 filesList = os.listdir(directory)
@@ -20,28 +22,28 @@ for myFile in filesList:
     transcripts.append(transcript)
 
 allSpeakers = []
+with open(csvfile, 'r') as f:
+    csvreader = csv.reader(f, delimiter=';')
+    csvreader = [row for row in csvreader]
 
-# Go through each transcript
-for transcript in transcripts:
+for rowno, row in enumerate(csvreader):
+    if row[0][0:3] == "XXX":
+        assert csvreader[rowno + 1][0] == transcripts[rowno]['description']
+        if csvreader[rowno + 2][0] == 't' or csvreader[rowno + 2][0] == 'r' or csvreader[rowno + 2][0] == 'd':
+            for row2 in csvreader[rowno:len(csvreader) + 1]:
+                if row[0][0:3] == "XXX":
+                    break
+                for speaker in transcripts[rowno]['text_by_speakers']:
+                    if speaker['speaker'] == csvreader[rowno + 2][1]:
+                        speaker['party'] = csvreader[rowno + 2][0]
+        elif csvreader[rowno + 3] == 't' or csvreader[rowno + 3] == 'r' or csvreader[rowno + 3] == 'd':
+            for row2 in csvreader[rowno:len(csvreader) + 1]:
+                if row[0][0:3] == "XXX":
+                    break
+                for speaker in transcripts[rowno]['text_by_speakers']:
+                    if speaker['speaker'] == csvreader[rowno + 2][1]:
+                        speaker['party'] = csvreader[rowno + 2][0]
 
-    text_by_speakers = transcript['text_by_speakers']
-
-    # Go through the speakers in the text organised by speaker
-    speakers = []
-    for speaker in text_by_speakers:
-        speakers.append({'name': speaker['speaker']})
-
-    # Loop through all speakers
-    for speaker in speakers:
-        # Loop through once again
-        for speaker2 in speakers:
-            # If they're not the same, but the difference is only one of case, add an identity.
-            if speaker['name'] != speaker2['name'] and speaker['name'].lower() == speaker2['name'].lower():
-                speaker['identity'] = speaker2['name']
-                # Leave the for loop - we only need one identity for each.
-                break
-    myDict = {'date': transcript['date'], 'speakers': speakers, 'description': transcript['description']}
-    allSpeakers.append(myDict)
-
-with open('allSpeakers.json', 'w') as f:
-    json.dump(allSpeakers, f)
+for file in filesList:
+    with open(os.join('transcripts-2ndJan',filesList[f]), 'w') as f:
+        json.dump(transcripts,f)

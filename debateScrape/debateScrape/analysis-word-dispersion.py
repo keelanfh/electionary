@@ -11,6 +11,9 @@ import urllib
 
 directory = cf.working_directory
 
+# The dispersion plot is currently only working for a single debate - we need to think about
+# whether this is something we want
+
 # This code creates a graph that shows the frequency of different words over time
 # In this case ive chosen as an example the words: racist, immigration, latino and america
 # Things to be changed: the X axis should represent years
