@@ -17,6 +17,7 @@ directory = cf.working_directory
 # I have moved the graph code to a separate file so that the analysis does not have to be re-run every time
 # you change something on the graph. This code can be run through Pypy to make it faster, but all sentiment
 # analysis code is quite slow because of the quantity of data being handled.
+# Some of the code could also be moved out of the for loop to improve speed of running.
 
 # TODO Could be improved, again, removing the interventions of the moderators
 
@@ -63,7 +64,8 @@ for transcript in transcripts:
 
     # Get the date - converting the ISO date back into a datetime.date object
     date = cf.iso_to_datetime(transcript['date'])
-    year = date.year
+    # Convert the year into a campaign year
+    year = cf.campaign_year_from_year(date.year)
 
     years.append(year)
 

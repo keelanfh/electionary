@@ -39,12 +39,12 @@ path = 'http://www.unc.edu/~ncaren/haphazard/'
 for file_name in files:
     urllib.urlretrieve(path + file_name, file_name)
 
-pos_words = open("positive.txt").read()
-positive_words = pos_words.split('\n')
+positive_words = open("positive.txt").read()
+positive_words = positive_words.split('\n')
 positive_counts = []
 
-neg_words = open('negative.txt').read()
-negative_words = neg_words.split('\n')
+negative_words = open('negative.txt').read()
+negative_words = negative_words.split('\n')
 negative_counts = []
 
 # Go through each file, open it, and add its content to the list
@@ -57,40 +57,35 @@ for myFile in filesList:
 all_list = []
 
 
-def party_test(dicty, partyy):
-    if 'party' in dicty:
-        if 'party' == partyy:
-            return True
-    else:
-        return True
+# def party_test(dicty, partyy):
+#     if 'party' in dicty:
+#         if 'party' == partyy:
+#             return True
+#     else:
+#         return True
 
-
+# Loop through the three 'parties': 'r' - republican; 'd' - democrat; 't' - anything else
 for party in ['t', 'r', 'd']:
-    # Create lists for the years and the length of the text for each year.
-    years = []
-    lengths = []
 
+    transcript_results = []
     # Go through each transcript
     for transcript in transcripts:
 
         # Get the date - converting the ISO date back into a datetime.date object
-        date = cf.iso_to_datetime(transcript['date'])
-        year = date.year
-
-        years.append(year)
+        year = cf.iso_to_datetime(transcript['date']).year
 
         # Create a string for all of the text in the debate
         allText = ""
 
         # Add all the text spoken by speakers to that string
         for speaker in transcript['text_by_speakers']:
-            if 'party' in speaker:
-                # TODO check why this isn't working
-                if speaker['party'] == party:
-                    allText += (" " + speaker['text'])
+            if speaker['party'] == party:
+                print party
+                print cf.unicode_to_ascii(transcript['description'])
+                allText += (" " + speaker['text'])
 
-                    # removes punctuation, digits, splits text into words
-                    # remove words shorter than 3 characters and suffixes
+        # removes punctuation, digits, splits text into words
+        # remove words shorter than 3 characters and suffixes
 
         for p in list(punctuation):
             allText = allText.replace(p, '')
@@ -98,71 +93,45 @@ for party in ['t', 'r', 'd']:
         for k in list(digits):
             allText = allText.replace(k, '')
 
-        words = allText.split()
+        # Split, check for length, lemmatize
+        long_words = [w for w in allText.split() if len(w) > 3]
+        long_words = [wnl.lemmatize(w) for w in long_words]
 
-        long_words = [w for w in words if len(w) > 3]
+        word_count = len(long_words)
 
-        text = [wnl.lemmatize(t) for t in long_words]
-
-        word_count = len(text)
-        lengths.append(word_count)
-
-        # count positive and negative words
-        positive_counter = 0
-        negative_counter = 0
-
-        for word in text:
-            if word in positive_words:
-                positive_counter += 1
-            elif word in negative_words:
-                negative_counter += 1
-        total_pos_words = positive_counter
-        total_neg_words = negative_counter
-
-        positive_counts.append(total_pos_words)
-        negative_counts.append(total_neg_words)
-
-        print year
+        total_pos_words = len([True for x in long_words if x in positive_words])
+        total_neg_words = len([True for x in long_words if x in negative_words])
+        print total_pos_words, total_neg_words, word_count, year
+        transcript_results.append(dict(total_pos_words=total_pos_words, total_neg_words=total_neg_words,
+                                       word_count=word_count, year=year))
 
     # Get a unique list of the years
-    uniqueYears = list(set(years))
-
-    # Create a new list for the sentiments corresponding to each year.
-    uniquepositivewords = []
-    uniquenegativewords = []
+    uniqueYears = list(set([cf.campaign_year_from_year(transcript_result['year'])
+                            for transcript_result in transcript_results]))
+    uniqueYears.sort()
+    print uniqueYears
+    year_results = []
 
     # For each unique year
     for uniqueYear in uniqueYears:
-        print uniqueYear
-        # Create a list which will contain all sentiment values for a year
-        positivewordsforyear = []
-        negativewordsforyear = []
 
-        # Go through all the different years, adding the sentiment to that list.
-        for number, year in enumerate(years):
-            if year == uniqueYear and lengths[number] != 0:
-                positivewordsforyear.append(positive_counts[number] / lengths[number])
+        transcript_results_for_year = [transcript_result for transcript_result in transcript_results
+                                       if cf.campaign_year_from_year(transcript_result['year']) == uniqueYear]
 
-        for number, year in enumerate(years):
-            if year == uniqueYear and lengths[number] != 0:
-                negativewordsforyear.append(negative_counts[number] / lengths[number])
+        word_count = sum([transcript_result['word_count'] for transcript_result in transcript_results_for_year])
 
-        # Take a simple mean of the sentiments of all texts in a given year.
-        # Add this to the list uniqueSentiments, which is paired with the uniqueYears list.
+        if word_count:
+            total_neg_words = sum(
+                [transcript_result['total_neg_words'] for transcript_result in transcript_results_for_year])
 
-        if len(positivewordsforyear) != 0:
-            uniquepositivewords.append(cf.mean(positivewordsforyear))
-        else:
-            uniquepositivewords.append(0)
+            total_pos_words = sum(
+                [transcript_result['total_pos_words'] for transcript_result in transcript_results_for_year])
 
-        if len(negativewordsforyear) != 0:
-            uniquenegativewords.append(cf.mean(negativewordsforyear))
-        else:
-            uniquenegativewords.append(0)
+            year_results.append(
+                dict(positive=total_pos_words / word_count, negative=total_neg_words / word_count,
+                     word_count=word_count, year=uniqueYear))
 
-    all_list.append(
-        dict(party=party, uniquenegativewords=uniquenegativewords, uniquepositivewords=uniquepositivewords,
-             uniqueYears=uniqueYears))
+    all_list.append(dict(party=party, year_results=year_results))
 
 with open('analysis-sentiment-time-party.json', 'w') as f:
     json.dump(all_list, f)

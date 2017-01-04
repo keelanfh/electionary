@@ -2,7 +2,16 @@ from __future__ import division
 import datetime as dt
 import sys
 
+import unicodedata
+
 working_directory = 'transcripts-3rdJan'
+
+
+def campaign_year_from_year(year):
+    if not year % 4:
+        return year
+    else:
+        return year - year % 4 + 4
 
 
 def mean(any_list):
@@ -24,5 +33,14 @@ def iso_to_datetime(iso_string):
     return dt.date(year, month, day)
 
 
+def unicode_to_ascii(unicode_object):
+    return unicodedata.normalize('NFKD', unicode_object).encode(
+        'ascii', 'ignore')
+
+
 if not sys.executable.split('/')[-1] == 'pypy':
     from commonfcpython import *
+else:
+    class TranscriptSelector(object):
+        def __init__(self, text):
+            raise Exception('Switch to CPython interpreter to instantiate TranscriptSelector')

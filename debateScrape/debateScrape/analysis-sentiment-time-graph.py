@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 import json
 
-# TODO name of the Y axis has to be changed and a legend has to be added
-
 with open('analysis-sentiment-time.json', 'r') as f:
     data = json.load(f)
 
@@ -10,8 +8,9 @@ uniqueYears = data['uniqueYears']
 uniquenegativewords = data['uniquenegativewords']
 uniquepositivewords = data['uniquepositivewords']
 
-plt.plot(uniqueYears, uniquenegativewords)
-plt.plot(uniqueYears, uniquepositivewords)
+plt.plot(uniqueYears, uniquenegativewords, label='negative')
+plt.plot(uniqueYears, uniquepositivewords, label='positive')
+plt.legend()
 plt.xlabel('Year')
 plt.ylabel('Proportion of words in negative/positive dictionaries')
 plt.title('Sentiment over time in US presidential election debates')
