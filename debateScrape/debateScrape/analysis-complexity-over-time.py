@@ -1,9 +1,10 @@
 from __future__ import division
+
+import urllib
+
 import commonfunctions as cf
 import json
 import os
-import numpy as np
-import matplotlib.pyplot as plt
 import nltk
 from string import punctuation
 from string import digits
@@ -17,7 +18,12 @@ wnl = nltk.WordNetLemmatizer()
 # But the results seem to match with our initial thoughts (trend towards simpler language)
 
 # open the file with the 1000 most common nouns in US English
-common_words = open("/Users/laurabravopriegue/transcript-processing/commonwordsenglish.txt").read()
+
+if 'commonwordsenglish.txt' not in os.listdir(os.curdir):
+    urllib.urlretrieve(
+        'https://gist.githubusercontent.com/deekayen/4148741/raw/01c6252ccc5b5fb307c1bb899c95989a8a284616/1-1000.txt',
+        'commonwordsenglish.txt')
+common_words = open("commonwordsenglish.txt").read()
 
 directory = cf.working_directory
 
@@ -45,6 +51,7 @@ for transcript in transcripts:
     date = cf.iso_to_datetime(transcript['date'])
     year = date.year
     years.append(year)
+    print year
 
     # Create a string for all of the text in the debate
     allText = ""
@@ -53,53 +60,43 @@ for transcript in transcripts:
     for speaker in transcript['text_by_speakers']:
         allText += (" " + speaker['text'])
 
-        # Remove digits, punctuation and split the string into words
-        for p in list(punctuation):
-            allText = allText.replace(p, '')
+    # Remove digits, punctuation and split the string into words
+    for p in list(punctuation):
+        allText = allText.replace(p, '')
 
-        for k in list(digits):
-            allText = allText.replace(k, '')
+    for k in list(digits):
+        allText = allText.replace(k, '')
 
-        words = allText.split()
+    words = allText.split()
 
-        # Remove short words (shorter than 3 characters) because they dont usually have much meaning
-        # Lemmatize the words, removes suffixes (plurals, verb terminations etc)
+    # Remove short words (shorter than 3 characters) because they dont usually have much meaning
+    # Lemmatize the words, removes suffixes (plurals, verb terminations etc)
 
-        long_words = [w for w in words if len(w) > 3]
+    long_words = [w for w in words if len(w) > 3]
 
-        text = [wnl.lemmatize(t) for t in long_words]
+    text = [wnl.lemmatize(t) for t in long_words]
 
-        # tag all words in the text according to what type of word they are (nouns, verbs etc)
-        # create a string for nouns
-        # filter the nouns and add them to the emptystring
+    # tag all words in the text according to what type of word they are (nouns, verbs etc)
+    # create a string for nouns
+    # filter the nouns and add them to the emptystring
 
-text_tagged = nltk.pos_tag(text)
+    text_tagged = nltk.pos_tag(text)
 
-stringnouns = ""
+    stringnouns = ""
 
-for word, pos in text_tagged:
-    if (pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS'):
-        stringnouns += (" " + word)
+    numberofnouns = len([True for word, pos in text_tagged
+                         if pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS'])
+    nouns.append(numberofnouns)
 
-    # count the number of nouns (the length of the string)
-    # add this to the list "nouns"
+    simplewords = len([True for word in text if word in common_words.split()])
+    # count how many of the 1000 common nouns appear on transcripts
+    # add it to the list "simplicity"
 
-numberofnouns = len(stringnouns)
-nouns.append(numberofnouns)
+    relativesimplewords = simplewords / numberofnouns
 
-# create a counter for simple words
-simplewords = 0
+    simplicity.append(relativesimplewords)
 
-# count how many of the 1000 common nouns appear on transcripts
-# add it to the list "simplicity"
-
-for word in text:
-    if word in common_words.split():
-        simplewords = simplewords + 1
-
-relativesimplewords = simplewords
-
-simplicity.append(relativesimplewords)  # Get a unique list of the years
+# Get a unique list of the years
 uniqueYears = list(set(years))
 
 # Create a new list for the simplicity corresponding to each year.
@@ -122,9 +119,12 @@ for year in uniqueYears:
 
     uniquesimplewords.append(cf.mean(simplewordsforyear))
 
-# The graph plots on the Y axis the relative amount of common nouns
+with open('analysis-complexity-over-time.json', 'w') as f:
+    json.dump([uniqueYears,uniquesimplewords], f)
 
-plt.plot(uniqueYears, uniquesimplewords, 'ro')
-plt.xlabel('Year')
-plt.ylabel('Common Nouns')
-plt.show()
+# # The graph plots on the Y axis the relative amount of common nouns
+#
+# plt.plot(uniqueYears, uniquesimplewords, 'ro')
+# plt.xlabel('Year')
+# plt.ylabel('Common Nouns')
+# plt.show()

@@ -56,14 +56,6 @@ for myFile in filesList:
 
 all_list = []
 
-
-# def party_test(dicty, partyy):
-#     if 'party' in dicty:
-#         if 'party' == partyy:
-#             return True
-#     else:
-#         return True
-
 # Loop through the three 'parties': 'r' - republican; 'd' - democrat; 't' - anything else
 for party in ['t', 'r', 'd']:
 
