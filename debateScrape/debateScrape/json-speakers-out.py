@@ -2,7 +2,7 @@ import commonfunctions as cf
 import json
 import os
 
-directory = 'transcripts-10thDec'
+directory = cf.working_directory
 
 # Produce a list of speakers
 # So that we can find duplicate speaker names
