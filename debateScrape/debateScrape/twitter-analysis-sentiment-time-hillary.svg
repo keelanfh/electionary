@@ -957,7 +957,7 @@ M146.4 333.187
 L220.8 281.166
 L295.2 259.783
 L369.6 302.22
-L444 362.405" style="fill:none;stroke:#e24a33;stroke-linecap:square;stroke-width:2.5;"/>
+L444 362.405" style="fill:none;stroke:#ff0000;stroke-linecap:square;stroke-width:2.5;"/>
    </g>
    <g id="line2d_23">
     <path clip-path="url(#p7ff5b81e1d)" d="
@@ -965,7 +965,7 @@ M146.4 82.6281
 L220.8 132.278
 L295.2 110.093
 L369.6 141.753
-L444 86.628" style="fill:none;stroke:#348abd;stroke-linecap:square;stroke-width:2.5;"/>
+L444 86.628" style="fill:none;stroke:#008000;stroke-linecap:square;stroke-width:2.5;"/>
    </g>
    <g id="patch_3">
     <path d="
@@ -1218,17 +1218,17 @@ z
    <g id="legend_1">
     <g id="patch_7">
      <path d="
-M417.159 88.0275
-L512.4 88.0275
-L512.4 49.2
-L417.159 49.2
+M417.159 235.414
+L512.4 235.414
+L512.4 196.586
+L417.159 196.586
 z
 " style="fill:#e5e5e5;stroke:#ffffff;stroke-linejoin:miter;stroke-width:0.5;"/>
     </g>
     <g id="line2d_24">
      <path d="
-M425.559 58.9181
-L442.359 58.9181" style="fill:none;stroke:#e24a33;stroke-linecap:square;stroke-width:2.5;"/>
+M425.559 206.304
+L442.359 206.304" style="fill:none;stroke:#ff0000;stroke-linecap:square;stroke-width:2.5;"/>
     </g>
     <g id="line2d_25"/>
     <g id="text_18">
@@ -1248,7 +1248,7 @@ L9.8125 0
 z
 " id="BitstreamVeraSans-Roman-4e"/>
      </defs>
-     <g transform="translate(455.559375 63.118125)scale(0.12 -0.12)">
+     <g transform="translate(455.559375 210.504375)scale(0.12 -0.12)">
       <use xlink:href="#BitstreamVeraSans-Roman-4e"/>
       <use x="74.8046875" xlink:href="#BitstreamVeraSans-Roman-65"/>
       <use x="136.328125" xlink:href="#BitstreamVeraSans-Roman-67"/>
@@ -1261,13 +1261,13 @@ z
     </g>
     <g id="line2d_26">
      <path d="
-M425.559 76.5319
-L442.359 76.5319" style="fill:none;stroke:#348abd;stroke-linecap:square;stroke-width:2.5;"/>
+M425.559 223.918
+L442.359 223.918" style="fill:none;stroke:#008000;stroke-linecap:square;stroke-width:2.5;"/>
     </g>
     <g id="line2d_27"/>
     <g id="text_19">
      <!-- Positive -->
-     <g transform="translate(455.559375 80.731875)scale(0.12 -0.12)">
+     <g transform="translate(455.559375 228.118125)scale(0.12 -0.12)">
       <use xlink:href="#BitstreamVeraSans-Roman-50"/>
       <use x="56.677734375" xlink:href="#BitstreamVeraSans-Roman-6f"/>
       <use x="117.859375" xlink:href="#BitstreamVeraSans-Roman-73"/>
