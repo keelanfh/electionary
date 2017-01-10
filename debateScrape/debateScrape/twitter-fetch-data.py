@@ -5,6 +5,7 @@ import tweepy
 from tweepy import OAuthHandler
 import json
 import mysecrets
+import commonfunctions as cf
 
 # Here I'm importing my API login details.
 # If you're using your own login details, you can just replace them here.
@@ -23,19 +24,23 @@ api = tweepy.API(auth)
 
 # Set how many times you want to fetch Tweets
 # The reply will be 200 times this number
-numberOfRuns = 1
+numberOfRuns = 16
 allStatuses = []
 
+username = 'HillaryClinton'
+
+statuses = api.user_timeline(username, count=1)
+
 # Set the ID of the last Tweet you want to fetch
-maxId = 805804034309427200
+maxId = cf.list_to_item(statuses).id
 
 # For each run in the range, fetch the tweets
 for run in xrange(numberOfRuns):
-    statuses = api.user_timeline('realDonaldTrump', max_id=maxId, count=5)
+    statuses = api.user_timeline(username, max_id=maxId, count=200)
     for status in statuses:
         allStatuses.append(status)
     maxId = statuses[-1].id
 
 # Save them all to files
-with open('trumpStatusesSample.json','w') as f:
+with open(username + 'Tweets.json','w') as f:
     json.dump([status._json for status in allStatuses], f)
