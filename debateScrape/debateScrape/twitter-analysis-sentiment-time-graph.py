@@ -11,11 +11,11 @@ candidates = ['Trump', 'Hillary']
 for candidate in candidates:
     if candidate == 'Hillary':
         import_filename = 'HillaryClintonTweetsResults.json'
-        export_filename = 'twitter-analysis-sentiment-time-hillary.svg'
+        export_filename = 'images/twitter-analysis-sentiment-time-hillary.svg'
         username = 'HillaryClinton'
     else:
         import_filename = 'realDonaldTrumpTweetsResults.json'
-        export_filename = 'twitter-analysis-sentiment-time-trump.svg'
+        export_filename = 'images/twitter-analysis-sentiment-time-trump.svg'
         username = 'realDonaldTrump'
 
     title = 'Positive and negative words in tweets - @' + username
@@ -67,7 +67,7 @@ for candidate in candidates:
 
     ax.set_xlabel('month')
     ax.set_ylabel('Proportion of words in  dictionaries')
-    ax.set_title(title)
+    ax.set_title(title, y=1.05)
     ax.legend(loc='center right')
 
     ax2.set_ylabel('Tweet Volume')

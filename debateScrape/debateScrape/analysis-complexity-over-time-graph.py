@@ -9,4 +9,4 @@ with open('analysis-complexity-over-time.json', 'r') as f:
 plt.plot(results[0], results[1], 'ro')
 plt.xlabel('Year')
 plt.ylabel('Common Nouns')
-plt.savefig('analysis-complexity-over-time.svg', format='svg')
+plt.savefig('images/analysis-complexity-time.svg', format='svg')
