@@ -957,7 +957,7 @@ M146.4 333.187
 L220.8 281.166
 L295.2 259.783
 L369.6 302.22
-L444 362.405" style="fill:none;stroke:#ff0000;stroke-linecap:square;stroke-width:2.5;"/>
+L444 362.405" style="fill:none;stroke:#ffa500;stroke-linecap:square;stroke-width:2.5;"/>
    </g>
    <g id="line2d_23">
     <path clip-path="url(#p7ff5b81e1d)" d="
@@ -1228,7 +1228,7 @@ z
     <g id="line2d_24">
      <path d="
 M425.559 206.304
-L442.359 206.304" style="fill:none;stroke:#ff0000;stroke-linecap:square;stroke-width:2.5;"/>
+L442.359 206.304" style="fill:none;stroke:#ffa500;stroke-linecap:square;stroke-width:2.5;"/>
     </g>
     <g id="line2d_25"/>
     <g id="text_18">
