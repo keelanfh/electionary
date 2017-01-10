@@ -3,34 +3,87 @@ import commonfunctions as cf
 import datetime as dt
 import matplotlib.pyplot as plt
 
-with open('realDonaldTrumpTweetsResults.json', 'r') as f:
-    statuses = json.load(f)
+months = [None, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+          "November", "December"]
+print months
 
-results = {}
-for status in statuses:
-    month = cf.iso_to_datetime(status['date']).month
-    year = cf.iso_to_datetime(status['date']).year
-    if year == 2016:
-        if month not in results:
-            results[month] = [status]
+candidates = ['Trump', 'Hillary']
+for candidate in candidates:
+    if candidate == 'Hillary':
+        import_filename = 'HillaryClintonTweetsResults.json'
+        export_filename = 'twitter-analysis-sentiment-time-hillary.svg'
+        username = 'HillaryClinton'
+    else:
+        import_filename = 'realDonaldTrumpTweetsResults.json'
+        export_filename = 'twitter-analysis-sentiment-time-trump.svg'
+        username = 'realDonaldTrump'
+
+    title = 'Positive and negative words in tweets - @' + username
+
+    with open(import_filename, 'r') as f:
+        statuses = json.load(f)
+
+    results = {}
+    for status in statuses:
+        month = cf.iso_to_datetime(status['date']).month
+        year = cf.iso_to_datetime(status['date']).year
+        if year == 2016:
+            if month not in results:
+                results[month] = [status]
+            else:
+                results[month].append(status)
+
+    positive_results = [(month_no, cf.mean([status['total_pos_words'] for status in results[month_no]]))
+                        for month_no in results]
+    negative_results = [(month_no, cf.mean([status['total_neg_words'] for status in results[month_no]]))
+                        for month_no in results]
+    tweet_volume = [(month_no, len(results[month_no])) for month_no in results]
+
+    print positive_results
+    print negative_results
+    print tweet_volume
+
+    if candidate == 'Hillary':
+        # REMOVE THE FIRST AND LAST POINT...
+        positive_results, negative_results, tweet_volume = positive_results[1:-1], \
+                                                           negative_results[1:-1], tweet_volume[
+                                                                                   1:-1]
+
+    plt.style.use('ggplot')
+    fig = plt.figure(len(candidate))
+    ax = fig.gca()
+
+    labels = ['Negative', 'Positive']
+    for labelno, data in enumerate([negative_results, positive_results]):
+        data2 = zip(*data)
+        ax.plot(data2[0], data2[1], label=labels[labelno], lw=2.5)
+
+    ax.legend()
+    ax.set_xlabel('month')
+    ax.yaxis.set_label_position('left')
+    ax.set_ylabel('Proportion of words in  dictionaries')
+    ax.set_title(title)
+    ax.grid(b=False)
+    ax.set_axis_bgcolor('white')
+    data2 = zip(*tweet_volume)
+
+    ax2 = ax.twinx()
+    ax2.grid(b=False)
+    ax2.set_ylabel('Tweet Volume')
+    ax2.set_axis_bgcolor('white')
+    ax2.bar(data2[0], data2[1], color='black', alpha=0.1, align='center')
+
+    plt.savefig(export_filename, format='svg')
+
+    print [item.get_text() for item in ax2.get_xticklabels(which='both')]
+    labels = [int(item.get_text()) for item in ax2.get_xticklabels()]
+    labels2 = labels
+    for label in labels:
+        if label in months:
+            labels2[label] = months[label][0:3]
         else:
-            results[month].append(status)
+            labels2[label] = ""
 
-positive_results = [(month_results, cf.mean([status['total_pos_words'] for status in results[month_results]]))
-       for month_results in results]
-negative_results = [(month_results, cf.mean([status['total_neg_words'] for status in results[month_results]]))
-       for month_results in results]
-print positive_results
-print negative_results
+    ax2.set_xticklabels(labels2)
 
-plt.figure(0)
-labels = ['Positive', 'Negative']
-for labelno, data in enumerate([positive_results, negative_results]):
-    data2 = zip(*data)
-    plt.plot(data2[0], data2[1], label=labels[labelno])
-
-plt.legend()
-plt.xlabel('month')
-plt.ylabel('Proportion of words in  dictionaries')
-plt.title('Negative Sentiment over time in US democratic/republican election debates')
-plt.savefig('twitter-analysis-sentiment-time-party.svg', format='svg')
+    plt.savefig(export_filename, format='svg')

@@ -92,7 +92,7 @@ for transcript in transcripts:
     # count how many of the 1000 common nouns appear on transcripts
     # add it to the list "simplicity"
 
-    relativesimplewords = simplewords / numberofnouns
+    relativesimplewords = simplewords
 
     simplicity.append(relativesimplewords)
 

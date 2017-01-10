@@ -35,7 +35,7 @@ def text_to_datetime(date_string):
     return dt.datetime(year=2016, month=month, day=int(day), hour=int(hour), minute=int(minute), second=int(second))
 
 
-with open('realDonaldTrumpTweets.json', 'r') as f:
+with open('HillaryClintonTweets.json', 'r') as f:
     statuses = json.load(f)
 
 results = []
@@ -66,5 +66,5 @@ for index, status in enumerate(statuses):
 
     print "Progress: " + str((index / y) * 100) + "%"
 
-with open('realDonaldTrumpTweetsResults.json', 'w') as f:
+with open('HillaryClintonTweetsResults.json', 'w') as f:
     json.dump(results, f)
