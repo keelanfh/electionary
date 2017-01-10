@@ -30,36 +30,45 @@ with open('results.csv', 'w') as f:
     dw.writeheader()
     dw.writerows(d)
 
+plt.style.use('ggplot')
+fig = plt.figure(0)
+ax = fig.gca()
+ax.grid(b=False)
+ax.set_axis_bgcolor('white')
 
+labels = ['Republican', 'Democrat']
+colors = ['red', 'blue']
 
-# plt.figure(0)
-# labels = ['Republican', 'Democrat']
-# for labelno, data in enumerate([repNegativeData, demNegativeData]):
-#     data2 = zip(*data)
-#     plt.plot(data2[0], data2[1], label=labels[labelno])
-#
-# plt.legend()
-# plt.xlabel('Year')
-# plt.ylabel('Proportion of words in  dictionaries')
-# plt.title('Negative Sentiment over time in US democratic/republican election debates')
-# plt.savefig('analysis-sentiment-time-party.svg', format='svg')
-#
-# plt.figure(1)
-# for labelno, data in enumerate([repPositiveData, demPositiveData]):
-#     data2 = zip(*data)
-#     plt.plot(data2[0], data2[1], label=labels[labelno])
-#
-# plt.legend()
-# plt.xlabel('Year')
-# plt.ylabel('Proportion of words in  dictionaries')
-# plt.title('Positive Sentiment over time in US democratic/republican election debates')
-# plt.savefig('analysis-sentiment-time-party2.svg', format='svg')
+for labelno, data in enumerate([repNegativeData, demNegativeData]):
+    data2 = zip(*data)
+    ax.plot(data2[0], data2[1], label=labels[labelno], lw=2.5)
 
-# plt.close()
-# plt.plot(zip(*repNegativeData).reverse(), label='dem')
-# plt.plot(zip(*demNegativeData).reverse(), label='rep')
-# plt.legend()
-# plt.xlabel('Year')
-# plt.ylabel('Proportion of words in  dictionaries')
-# plt.title('Negative Sentiment over time in US democratic/republican election debates')
-# plt.savefig('analysis-sentiment-time-party2.svg', format='svg')
+ax.legend()
+ax.set_xlabel('Year')
+ax.set_ylabel('Proportion of words in  dictionaries')
+ax.set_title('Negative Sentiment over time in US democratic/republican election debates')
+plt.savefig('analysis-sentiment-time-party.svg', format='svg')
+
+fig = plt.figure(1)
+ax = fig.gca()
+ax.grid(b=False)
+ax.set_axis_bgcolor('white')
+
+for labelno, data in enumerate([repPositiveData, demPositiveData]):
+    data2 = zip(*data)
+    ax.plot(data2[0], data2[1], label=labels[labelno])
+
+ax.legend()
+ax.set_xlabel('Year')
+ax.set_ylabel('Proportion of words in  dictionaries')
+ax.set_title('Positive Sentiment over time in US democratic/republican election debates')
+plt.savefig('analysis-sentiment-time-party-positive.svg', format='svg')
+
+plt.close()
+ax.plot(zip(*repNegativeData).reverse(), label='dem')
+ax.plot(zip(*demNegativeData).reverse(), label='rep')
+ax.legend()
+ax.set_xlabel('Year')
+ax.set_ylabel('Proportion of words in  dictionaries')
+ax.set_title('Negative Sentiment over time in US democratic/republican election debates')
+plt.savefig('analysis-sentiment-time-party-negative.svg', format='svg')
