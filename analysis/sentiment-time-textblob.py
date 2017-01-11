@@ -1,8 +1,10 @@
-import debateScrape.debateScrape.commonfunctions as cf
 import json
 import os
-from textblob import TextBlob
+
 import matplotlib.pyplot as plt
+from textblob import TextBlob
+
+import commonfunctions as cf
 
 directory = cf.working_directory
 

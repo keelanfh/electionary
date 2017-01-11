@@ -1,11 +1,13 @@
 # Testing collection of data from Twitter
 # For Donald Trump in this case
 
+import json
+
 import tweepy
 from tweepy import OAuthHandler
-import json
-import mysecrets
+
 import commonfunctions as cf
+import mysecrets
 
 # Here I'm importing my API login details.
 # If you're using your own login details, you can just replace them here.

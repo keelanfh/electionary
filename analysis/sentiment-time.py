@@ -1,14 +1,14 @@
 from __future__ import division
-from string import punctuation
-from string import digits
-import urllib
-import debateScrape.debateScrape.commonfunctions as cf
+
 import json
 import os
-import plotly.plotly as py
-import plotly.graph_objs as go
+import urllib
+from string import digits
+from string import punctuation
+
 import nltk
-import sys
+
+import commonfunctions as cf
 
 wnl = nltk.WordNetLemmatizer()
 

@@ -1,6 +1,7 @@
-import commonfunctions as cf
 import json
 import os
+
+import commonfunctions as cf
 
 directory = cf.working_directory
 

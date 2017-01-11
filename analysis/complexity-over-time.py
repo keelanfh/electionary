@@ -1,13 +1,14 @@
 from __future__ import division
 
-import urllib
-
-import debateScrape.debateScrape.commonfunctions as cf
 import json
 import os
-import nltk
-from string import punctuation
+import urllib
 from string import digits
+from string import punctuation
+
+import nltk
+
+import commonfunctions as cf
 
 wnl = nltk.WordNetLemmatizer()
 

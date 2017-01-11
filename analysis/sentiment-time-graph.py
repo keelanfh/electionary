@@ -1,7 +1,9 @@
-import matplotlib.pyplot as plt
 import json
 import os
-import debateScrape.debateScrape.commonfunctions as cf
+
+import matplotlib.pyplot as plt
+
+import commonfunctions as cf
 
 root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
 directory = os.path.join(root_directory, cf.working_directory)

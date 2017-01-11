@@ -1,8 +1,11 @@
 from __future__ import division
-import debateScrape.debateScrape.commonfunctions as cf
+
 import json
 import os
+
 import nltk
+
+import commonfunctions as cf
 
 wnl = nltk.WordNetLemmatizer()
 from string import punctuation

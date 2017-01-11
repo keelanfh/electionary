@@ -1,8 +1,9 @@
-import commonfunctions as cf
-import json
 import csv
+import json
 import os
 import unicodedata
+
+import commonfunctions as cf
 
 directory = cf.working_directory
 csvfile = 'json-demrep.csv'
