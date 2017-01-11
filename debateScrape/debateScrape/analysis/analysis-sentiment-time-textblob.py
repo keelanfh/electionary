@@ -1,4 +1,4 @@
-import commonfunctions as cf
+import debateScrape.debateScrape.commonfunctions as cf
 import json
 import os
 from textblob import TextBlob

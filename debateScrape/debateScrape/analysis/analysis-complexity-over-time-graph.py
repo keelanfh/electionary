@@ -1,5 +1,7 @@
 import json
 import matplotlib.pyplot as plt
+import os
+import debateScrape.debateScrape.commonfunctions as cf
 
 with open('analysis-complexity-over-time.json', 'r') as f:
     results = json.load(f)
@@ -9,4 +11,4 @@ with open('analysis-complexity-over-time.json', 'r') as f:
 plt.plot(results[0], results[1], 'ro')
 plt.xlabel('Year')
 plt.ylabel('Common Nouns')
-plt.savefig('images/analysis-complexity-time.svg', format='svg')
+plt.savefig(os.path.join(cf.root_directory, 'images', 'complexity-over-time.svg'), format='svg')

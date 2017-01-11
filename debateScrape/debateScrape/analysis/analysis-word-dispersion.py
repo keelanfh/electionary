@@ -1,5 +1,5 @@
 from __future__ import division
-import commonfunctions as cf
+import debateScrape.debateScrape.commonfunctions as cf
 import json
 import os
 import nltk

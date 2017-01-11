@@ -1,10 +1,12 @@
 from __future__ import division
 import datetime as dt
 import sys
+import os
 
 import unicodedata
 
-working_directory = 'transcripts-3rdJan'
+working_directory = os.path.join(os.curdir,'transcripts-3rdJan')
+root_directory = os.path.dirname(os.path.abspath(os.curdir))
 
 
 def campaign_year_from_year(year):

@@ -2,7 +2,7 @@ from __future__ import division
 from string import punctuation
 from string import digits
 import urllib
-import commonfunctions as cf
+import debateScrape.debateScrape.commonfunctions as cf
 import json
 import os
 import plotly.plotly as py
