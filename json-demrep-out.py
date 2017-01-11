@@ -3,7 +3,7 @@ import json
 import os
 import unicodedata
 
-import commonfunctions as cf
+from commonfunctions import commonfunctions as cf
 
 directory = cf.working_directory
 csvfile = 'json-demrep.csv'

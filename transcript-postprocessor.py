@@ -12,7 +12,7 @@ from __future__ import division
 import json
 import os
 
-import commonfunctions as cf
+from commonfunctions import commonfunctions as cf
 
 # By default, the program runs only for a sample of files.
 # To change this, change the following to False.

@@ -4,7 +4,7 @@ import os
 import matplotlib.pyplot as plt
 from textblob import TextBlob
 
-import commonfunctions as cf
+from commonfunctions import commonfunctions as cf
 
 directory = cf.working_directory
 

@@ -2,7 +2,7 @@ import json
 
 import matplotlib.pyplot as plt
 
-import commonfunctions as cf
+from commonfunctions import commonfunctions as cf
 
 months = [None, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
           "November", "December"]
