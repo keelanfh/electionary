@@ -26,8 +26,8 @@ directory = os.path.join(root_directory, cf.working_directory)
 
 # SAMPLE
 if runForSample:
-    htmlDirectory = 'html-files-sample'
-    transcriptDir = 'transcripts-sample'
+    htmlDirectory = os.path.join(root_directory, 'html-files-sample')
+    transcriptDir = os.path.join(root_directory, 'transcripts-sample')
 
 # NOT SAMPLE
 else:

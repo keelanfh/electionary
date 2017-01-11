@@ -1,9 +1,9 @@
 import json
 import os
-
 from commonfunctions import commonfunctions as cf
 
-directory = 'transcripts-10thDec'
+root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
+directory = os.path.join(root_directory, cf.working_directory)
 
 # Example to demonstrate opening JSON files
 # And starting to process them

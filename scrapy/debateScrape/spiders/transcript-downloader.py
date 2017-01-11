@@ -7,6 +7,7 @@ from scrapy.selector import HtmlXPathSelector
 import json
 import os
 
+
 class MySpider(BaseSpider):
     # Name the spider as required by scrapy
     name = "download"

@@ -5,8 +5,10 @@ import unicodedata
 
 from commonfunctions import commonfunctions as cf
 
-directory = cf.working_directory
 csvfile = 'json-demrep.csv'
+
+root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
+directory = os.path.join(root_directory, cf.working_directory)
 
 # Produce CSV for us to sort out democratic and republican nominees
 

@@ -3,7 +3,8 @@ import os
 
 from commonfunctions import commonfunctions as cf
 
-directory = cf.working_directory
+root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
+directory = os.path.join(root_directory, cf.working_directory)
 
 # Produce a list of speakers
 # So that we can find duplicate speaker names

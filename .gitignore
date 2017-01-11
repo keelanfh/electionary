@@ -7,9 +7,9 @@
 archive
 transcripts*
 html*
+xper*
 .idea
 
-mysecrets.py
-xper-city-search.py
+commonfunctions/mysecrets.py
 .DS_Store
 images/complexity-over-time.svg

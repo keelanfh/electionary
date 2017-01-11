@@ -28,6 +28,7 @@ demNegativeData = [(x['year'], x['negative']) for x in d]
 
 years = list(set([x['year'] for x in r]).union([x['year'] for x in d])).sort()
 
+# This bit writes to a file. Useful if you want a table of results
 with open('results.csv', 'w') as f:
     dw = csv.DictWriter(f, r[0].keys())
     csv.writer(f, ['Sentiment in Republican Debates'])

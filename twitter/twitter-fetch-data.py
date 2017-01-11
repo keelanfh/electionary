@@ -7,7 +7,7 @@ import tweepy
 from tweepy import OAuthHandler
 
 from commonfunctions import commonfunctions as cf
-import mysecrets
+from commonfunctions import mysecrets
 
 # Here I'm importing my API login details.
 # If you're using your own login details, you can just replace them here.
