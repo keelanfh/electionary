@@ -1,7 +1,12 @@
 import matplotlib.pyplot as plt
 import json
+import os
+import debateScrape.debateScrape.commonfunctions as cf
 
-with open('analysis-sentiment-time.json', 'r') as f:
+root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
+directory = os.path.join(root_directory, cf.working_directory)
+
+with open('sentiment-time.json', 'r') as f:
     data = json.load(f)
 
 uniqueYears = data['uniqueYears']
@@ -20,4 +25,4 @@ ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in negative/positive dictionaries')
 ax.set_title('Sentiment over time in US presidential election debates', y=1.05)
-plt.savefig('images/analysis-sentiment-time.svg', format='svg')
+plt.savefig(os.path.join(root_directory, 'images', 'analysis-sentiment-time.svg'), format='svg')

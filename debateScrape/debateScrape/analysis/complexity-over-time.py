@@ -25,7 +25,8 @@ if 'commonwordsenglish.txt' not in os.listdir(os.curdir):
         'commonwordsenglish.txt')
 common_words = open("commonwordsenglish.txt").read()
 
-directory = cf.working_directory
+root_directory = os.path.dirname(os.path.abspath(os.curdir))
+directory = os.path.join(root_directory, cf.working_directory)
 
 # List all the files in the directory
 filesList = os.listdir(directory)
@@ -119,8 +120,8 @@ for year in uniqueYears:
 
     uniquesimplewords.append(cf.mean(simplewordsforyear))
 
-with open('analysis-complexity-over-time.json', 'w') as f:
-    json.dump([uniqueYears,uniquesimplewords], f)
+with open('complexity-over-time.json', 'w') as f:
+    json.dump([uniqueYears, uniquesimplewords], f)
 
 # # The graph plots on the Y axis the relative amount of common nouns
 #
@@ -128,5 +129,3 @@ with open('analysis-complexity-over-time.json', 'w') as f:
 # plt.xlabel('Year')
 # plt.ylabel('Common Nouns')
 # plt.show()
-
-import __future__

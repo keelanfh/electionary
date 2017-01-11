@@ -12,7 +12,8 @@ import sys
 
 wnl = nltk.WordNetLemmatizer()
 
-directory = cf.working_directory
+root_directory = os.path.dirname(os.path.abspath(os.curdir))
+directory = os.path.join(root_directory, cf.working_directory)
 
 # I have moved the graph code to a separate file so that the analysis does not have to be re-run every time
 # you change something on the graph. This code can be run through Pypy to make it faster, but all sentiment
@@ -125,5 +126,5 @@ for party in ['t', 'r', 'd']:
 
     all_list.append(dict(party=party, year_results=year_results))
 
-with open('analysis-sentiment-time-party.json', 'w') as f:
+with open('sentiment-time-party.json', 'w') as f:
     json.dump(all_list, f)

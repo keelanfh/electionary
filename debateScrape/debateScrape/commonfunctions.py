@@ -5,8 +5,7 @@ import os
 
 import unicodedata
 
-working_directory = os.path.join(os.curdir,'transcripts-3rdJan')
-root_directory = os.path.dirname(os.path.abspath(os.curdir))
+working_directory = 'transcripts-3rdJan'
 
 
 def campaign_year_from_year(year):

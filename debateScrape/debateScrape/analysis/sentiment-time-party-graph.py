@@ -1,8 +1,13 @@
 import matplotlib.pyplot as plt
 import json
 import csv
+import debateScrape.debateScrape.commonfunctions as cf
+import os
 
-with open('analysis-sentiment-time-party.json', 'r') as f:
+root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
+directory = os.path.join(root_directory, cf.working_directory)
+
+with open('sentiment-time-party.json', 'r') as f:
     data = json.load(f)
 
 r, d = None, None
@@ -47,7 +52,7 @@ ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in  dictionaries')
 ax.set_title('Negative Sentiment over time in US democratic/republican election debates', y=1.05)
-plt.savefig('images/analysis-sentiment-time-party-negative.svg', format='svg')
+plt.savefig(os.path.join(root_directory, 'images','analysis-sentiment-time-party-negative.svg'), format='svg')
 
 fig = plt.figure(1)
 ax = fig.gca()
@@ -62,4 +67,4 @@ ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in  dictionaries')
 ax.set_title('Positive Sentiment over time in US democratic/republican election debates', y=1.05)
-plt.savefig('images/analysis-sentiment-time-party-positive.svg', format='svg')
+plt.savefig(os.path.join(root_directory, 'images', 'analysis-sentiment-time-party-positive.svg'), format='svg')
