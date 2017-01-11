@@ -19,5 +19,5 @@ ax.plot(uniqueYears, uniquepositivewords, label='positive', color='green', lw=2.
 ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in negative/positive dictionaries')
-ax.set_title('Sentiment over time in US presidential election debates')
+ax.set_title('Sentiment over time in US presidential election debates', y=1.05)
 plt.savefig('images/analysis-sentiment-time.svg', format='svg')
