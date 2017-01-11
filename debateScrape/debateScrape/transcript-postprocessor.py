@@ -23,12 +23,12 @@ runForSample = True
 
 # SAMPLE
 if runForSample:
-    htmlDirectory = 'html-output-sample'
+    htmlDirectory = 'html-files-sample'
     transcriptDir = 'transcripts-sample'
 
 # NOT SAMPLE
 else:
-    htmlDirectory = 'html-output'
+    htmlDirectory = 'html-files'
     transcriptDir = 'transcripts-21stDec'
 
 # Make the directory to output to, if it doesn't exist already.
