@@ -8,10 +8,16 @@ uniqueYears = data['uniqueYears']
 uniquenegativewords = data['uniquenegativewords']
 uniquepositivewords = data['uniquepositivewords']
 
-plt.plot(uniqueYears, uniquenegativewords, label='negative')
-plt.plot(uniqueYears, uniquepositivewords, label='positive')
-plt.legend()
-plt.xlabel('Year')
-plt.ylabel('Proportion of words in negative/positive dictionaries')
-plt.title('Sentiment over time in US presidential election debates')
-plt.savefig('images/images/nalysis-sentiment-time.svg', format='svg')
+plt.style.use('ggplot')
+fig = plt.figure(0)
+ax = fig.gca()
+ax.grid(b=False)
+ax.set_axis_bgcolor('white')
+
+ax.plot(uniqueYears, uniquenegativewords, label='negative', color='orange')
+ax.plot(uniqueYears, uniquepositivewords, label='positive', color='green')
+ax.legend()
+ax.set_xlabel('Year')
+ax.set_ylabel('Proportion of words in negative/positive dictionaries')
+ax.set_title('Sentiment over time in US presidential election debates')
+plt.savefig('images/analysis-sentiment-time.svg', format='svg')
