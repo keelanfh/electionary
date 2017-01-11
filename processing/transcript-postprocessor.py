@@ -17,7 +17,10 @@ from commonfunctions import commonfunctions as cf
 # By default, the program runs only for a sample of files.
 # To change this, change the following to False.
 runForSample = True
-#runForSample = False
+# runForSample = False
+
+root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
+directory = os.path.join(root_directory, cf.working_directory)
 
 # Enter your working directories here:
 
@@ -28,8 +31,8 @@ if runForSample:
 
 # NOT SAMPLE
 else:
-    htmlDirectory = 'html-files'
-    transcriptDir = 'transcripts-21stDec'
+    htmlDirectory = os.path.join(root_directory, 'html-files')
+    transcriptDir = os.path.join(root_directory, 'transcripts-21stDec')
 
 # Make the directory to output to, if it doesn't exist already.
 if transcriptDir not in os.listdir(os.curdir):
@@ -365,7 +368,7 @@ def process_html_file(html_file):
 
         if sentence_dict["speaker"].lower() != 'participants' \
                 and sentence_dict['speaker'].lower() != 'candidates' and sentence_dict[
-                'speaker'].lower() != 'moderators':
+            'speaker'].lower() != 'moderators':
             sentence_dict["speaker"] = speaker_clean(sentence_dict["speaker"], debate_name, debate_date_iso)
 
         speaker_list.append(sentence_dict["speaker"])
