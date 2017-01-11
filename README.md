@@ -22,7 +22,7 @@ To install `scrapy`, run the following in Terminal:
 
 ### Downloading the transcripts
 
-Go to Terminal, and navigate to the `the-electionary/scrapy` directory in the terminal.
+Go to Terminal, and navigate to the `electionary/scrapy` directory in the terminal.
 
 Then run `scrapy crawl urlfetch`. This fetches the list of URLs to download from.
 
