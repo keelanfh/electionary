@@ -2,5 +2,14 @@
 *.csv
 *.txt
 *.html
+*.zip
+*.pyc
+archive
+transcripts*
+html*
+.idea
+
 mysecrets.py
 xper-city-search.py
+.DS_Store
+images/complexity-over-time.svg
