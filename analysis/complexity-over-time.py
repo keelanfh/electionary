@@ -94,9 +94,7 @@ for transcript in transcripts:
     # count how many of the 1000 common nouns appear on transcripts
     # add it to the list "simplicity"
 
-    relativesimplewords = simplewords
-
-    simplicity.append(relativesimplewords)
+    simplicity.append(simplewords)
 
 # Get a unique list of the years
 uniqueYears = list(set(years))
@@ -109,7 +107,7 @@ for year in uniqueYears:
     # Create a list which will contain all simplicity values for a year
     simplewordsforyear = []
 
-    # Go through all the different years, adding the simplicity to that list and dividing 
+    # Go through all the different years, adding the simplicity to that list and dividing
     # it over the total number of nouns.
 
     for number in range(len(years)):
@@ -121,7 +119,7 @@ for year in uniqueYears:
 
     uniquesimplewords.append(cf.mean(simplewordsforyear))
 
-with open('complexity-over-time.json', 'w') as f:
+with open('complexity-over-time2.json', 'w') as f:
     json.dump([uniqueYears, uniquesimplewords], f)
 
 # # The graph plots on the Y axis the relative amount of common nouns

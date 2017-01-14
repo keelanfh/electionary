@@ -6,19 +6,17 @@ This software is released under the MIT license. However, the transcripts collec
 
 ## What this is
 
-Software to download a series of debate transcripts from the [American Presidency Project](http://presidency.ucsb.edu/debates.php) and process them.
+Software to download a series of US Presidential election debate transcripts from the [American Presidency Project](http://presidency.ucsb.edu/debates.php), process and analyse them. It was used for a project, [The Electionary](https://theelectionary.wordpress.com).
 
 ## How to use it
 
-### Prerequisites for downloading the HTML files
+### Dependencies
 
-You must have `scrapy` installed before using this code.
+The project depends on the following external libraries:
 
-To install `scrapy`, run the following in Terminal:
+`scrapy`, `matplotlib`, `numpy` , `nltk`, which can all be installed through `pip`.
 
-`pip install scrapy`
-
-(this applies only to macOS/OS X - look at the documentation for other platforms).
+Optionally, `pypy` can be used to run some of the code faster. `nltk` is a requirement within `pypy` for this code - none of the other external libraries are required in `pypy` and indeed they are not compatible with `pypy`.
 
 ### Downloading the transcripts
 
@@ -42,3 +40,9 @@ This will produce a transcript for each candidate's speech in an individual deba
 ### Analysis
 
 If you want to access the text or other attributes from these JSON files, have a look at `json-import-example.py`.
+
+### A note on interpreters
+
+You shouldn't have any issues running the code in `processing` through the standard CPython interpreter, but the scripts in the `analysis` section can be very slow to run in CPython. It is highly recommended to install [pypy](http://pypy.org) to run the code 2-3x faster. You will need to install the `nltk` library in `pypy`.
+
+`pypy` is not compatible with `matplotlib`, so graphs cannot be created when using the `pypy` interpreter - you will need to switch back to CPython to produce graphs. The files to produce graphs all end in `-graph.py` so it is easy to switch interpreters and run them separately.

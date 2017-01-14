@@ -81,6 +81,8 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
             tag = 'b'
         elif tr_type == 'italic':
             tag = 'i'
+        else:
+            raise Exception('Incorrect classification of transcript!')
 
         # Check if there is a relevant tag, i.e. if the element starts with <b>
         if p_selector.extract()[tag_range[0]:tag_range[1]] == "<" + tag + ">":
@@ -93,7 +95,7 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
             # If there is no element after the bold/italic element or
             # If the element after the bold/italic element consists of spaces only
             if not (len(p_selector.xpath(".//text()").extract()) == 1 or
-                            p_selector.xpath(".//text()").extract()[1].replace(" ", "") == ""):
+                        p_selector.xpath(".//text()").extract()[1].replace(" ", "") == ""):
                 print p_selector
                 # Extract the speaker name from the text
                 speaker_name = p_selector.xpath("./" + tag + "/text()").extract()
@@ -178,7 +180,8 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
     # It is then returned back to the function which called this one.
     labelled_speech = {"speaker": speaker_name, "text": sentence}
     try:
-        assert type(labelled_speech['speaker']) == str or type(labelled_speech['speaker']) == unicode or labelled_speech['speaker'] is None
+        assert type(labelled_speech['speaker']) == str or type(labelled_speech['speaker']) == unicode or \
+               labelled_speech['speaker'] is None
     except:
         print labelled_speech
         raise Exception('Something went wrong with the speaker assignment here!')
