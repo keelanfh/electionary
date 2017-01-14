@@ -22,7 +22,7 @@ To install `scrapy`, run the following in Terminal:
 
 ### Downloading the transcripts
 
-Go to Terminal, and navigate to the `electionary/scrapy` directory in the terminal.
+Navigate to the `electionary/scrapy` directory in Terminal.
 
 Then run `scrapy crawl urlfetch`. This fetches the list of URLs to download from.
 
@@ -38,5 +38,7 @@ The HTML files will be stored in `html-files`.
 Now that you have all the HTML downloaded, you can now do any processing from the local files, which will be much faster and will prevent unnecessary load on the host.
 As a starting point, try running `transcript-postprocessor.py`.
 This will produce a transcript for each candidate's speech in an individual debate in JSON format, located in the `transcripts` folder.
+
+### Analysis
 
 If you want to access the text or other attributes from these JSON files, have a look at `json-import-example.py`.

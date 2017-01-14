@@ -12,30 +12,35 @@ from __future__ import division
 import json
 import os
 
+import unicodedata
+
 from commonfunctions import commonfunctions as cf
 
 # By default, the program runs only for a sample of files.
 # To change this, change the following to False.
-runForSample = True
-# runForSample = False
+runForSample = False
+
+# Change this to True if you want to import a speaker aliases file
+importSpeakerAliases = False
 
 root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
 directory = os.path.join(root_directory, cf.working_directory)
 
+speaker_aliases_filename = 'allSpeakersOut.json'
 # Enter your working directories here:
 
 # SAMPLE
 if runForSample:
     htmlDirectory = os.path.join(root_directory, 'html-files-sample')
-    transcriptDir = os.path.join(root_directory, 'transcripts-sample')
+    transcriptDir = os.path.join(root_directory, 'transcripts-sample2')
 
 # NOT SAMPLE
 else:
     htmlDirectory = os.path.join(root_directory, 'html-files')
-    transcriptDir = os.path.join(root_directory, 'transcripts-21stDec')
+    transcriptDir = os.path.join(root_directory, 'not-interesting')
 
 # Make the directory to output to, if it doesn't exist already.
-if transcriptDir not in os.listdir(os.curdir):
+if not os.path.exists(transcriptDir):
     os.mkdir(transcriptDir)
 
 # List all the files in the directory.
@@ -58,6 +63,10 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
     else:
         xpath_address = ".//text()"
         tag_range = [3, 6]
+    try:
+        assert tr_type == 'bold' or tr_type == 'italic' or tr_type == 'upper'
+    except:
+        raise Exception('Incorrect argument passed, check extract_text_from_p() call')
 
     # This action just for transcripts with bold or italic elements
     if tr_type == 'bold' or tr_type == 'italic':
@@ -85,11 +94,16 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
             # If the element after the bold/italic element consists of spaces only
             if not (len(p_selector.xpath(".//text()").extract()) == 1 or
                             p_selector.xpath(".//text()").extract()[1].replace(" ", "") == ""):
+                print p_selector
                 # Extract the speaker name from the text
                 speaker_name = p_selector.xpath("./" + tag + "/text()").extract()
                 # This returns a list, so need to take only the first element
                 # We set this as the speaker name.
-                speaker_name = cf.list_to_item(speaker_name)
+                print speaker_name
+                if speaker_name:
+                    speaker_name = speaker_name[0]
+                else:
+                    speaker_name = None
 
             # Now we build the sentence. This is from the text in the selector.
             # first_string is being used to mark the speaker's name.
@@ -125,18 +139,10 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
         # Returns a list with at most two elements
 
         # If the first element of the list is uppercase, this is the speaker.
-        if split_text[0].isupper():
-            speaker_name = split_text[0]
-            # If there's a sentence to go with it, use it.
-            if len(split_text) > 1:
-                sentence = split_text[1]
-            else:
-                sentence = ""
-
         # The only exception to uppercase speakers is Mc and MR, check these too
-        elif split_text[0].replace("Mc", "MC").replace("Mr", "MR").isupper():
+        if split_text[0].replace("Mc", "MC").replace("Mr", "MR").isupper():
             speaker_name = split_text[0]
-            if len(split_text) > 1:
+            if len(split_text) == 2:
                 sentence = split_text[1]
             else:
                 sentence = ""
@@ -145,12 +151,6 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
         # (which will later be attributed to the previous speaker)
         else:
             sentence = all_text
-
-    # Raise an exception if a malformed transcript type argument has been passed.
-    # e.g. if tr_type = 'foo'
-    else:
-        print tr_type
-        raise Exception('Classification error occurred.')
 
     # Tidy up the sentence. Remove colons from the beginning of the string.
     # Check the first character and if it's a space/colon,
@@ -166,10 +166,22 @@ def extract_text_from_p(p_selector, tr_type, first_element=False):
             if sentence == "":
                 break
 
+    # Convert everything from Unicode to ASCII.
+    # This makes things easier later.
+    if speaker_name is unicode:
+        speaker_name = unicodedata.normalize('NFKD', speaker_name).encode('ascii', 'ignore')
+    if sentence is unicode:
+        sentence = unicodedata.normalize('NFKD', sentence).encode('ascii', 'ignore')
+
     # Create a dict which contains the name of the speaker,
     # and the sentence which has been processed.
     # It is then returned back to the function which called this one.
     labelled_speech = {"speaker": speaker_name, "text": sentence}
+    try:
+        assert type(labelled_speech['speaker']) == str or type(labelled_speech['speaker']) == unicode or labelled_speech['speaker'] is None
+    except:
+        print labelled_speech
+        raise Exception('Something went wrong with the speaker assignment here!')
     return labelled_speech
 
 
@@ -182,8 +194,7 @@ def extract_transcript_selector(transcript_selector, transcript_type):
 
     # First deal with the first paragraph, which doesn't sit in <p> tags.
     # Create a new selector which selects the displaytext element.
-    first_element = transcript_selector.xpath("//span[@class='displaytext']")
-    first_element = cf.list_to_item(first_element)
+    first_element = transcript_selector.xpath("//span[@class='displaytext']")[0]
 
     # Call labelled_speech
     # Need to pass the 'first' argument as True, because we're dealing with the first element.
@@ -256,24 +267,26 @@ def speaker_clean(speaker, debate_name, debate_date):
     if [True for text in ['moderators', 'participants', 'candidates'] if speaker.lower() == text]:
         return speaker
 
-    with open('allSpeakersOut.json', 'r') as f:
-        allSpeakersOut = json.load(f)
+    if importSpeakerAliases:
+        with open(speaker_aliases_filename, 'r') as f:
+            all_speakers_in = json.load(f)
 
-    success = False
-    for debate in allSpeakersOut:
-        if debate['date'] == debate_date and debate['description'] == debate_name:
-            for speakerList in debate['speakerLists']:
-                print speakerList
-                for speakerName in speakerList:
-                    if speakerName == speaker:
-                        speaker = speakerList[0]
-                        success = True
+        success = False
+        for debate in all_speakers_in:
+            if debate['date'] == debate_date and debate['description'] == debate_name:
+                for speakerList in debate['speakerLists']:
+                    print speakerList
+                    for speakerName in speakerList:
+                        if speakerName == speaker:
+                            speaker = speakerList[0]
+                            success = True
 
-    if not success:
-        print speaker
-        raise Exception('Speaker names aren\'t working')
+        try:
+            assert success
+        except:
+            raise Exception('Import of speaker names isn\'t working')
 
-    return speaker
+        return speaker
 
 
 # Function to produce text files, for checking the work.
@@ -292,7 +305,7 @@ def create_text_file(debate_date_iso, debate_name, sentence_dicts):
                 # f.writelines(speaker_clean(sentence_dict['speaker']).encode('utf8'))
             f.writelines("\n    ")
             if sentence_dict['text'] is not None:
-                f.writelines(sentence_dict['text'].encode('utf8'))
+                f.writelines(sentence_dict['text'])
             speaker = sentence_dict['speaker']
 
 
@@ -402,23 +415,23 @@ def process_html_file(html_file):
             if all_text_of_speaker[-1] == " ":
                 all_text_of_speaker = all_text_of_speaker[:-1]
 
-        with open('allSpeakersOut.json', 'r') as f:
-            allSpeakersOut = json.load(f)
+        if importSpeakerAliases:
+            # Add the list of speaker aliases to the output
+            with open(speaker_aliases_filename, 'r') as f:
+                all_speakers_in = json.load(f)
 
-        success = False
-
-        # Add speaker lists
-        if not [True for text in ['participants', 'moderators', 'candidates'] if speaker.lower() == text]:
-            for debate in allSpeakersOut:
-                if debate['date'] == debate_date_iso and debate['description'] == debate_name:
-                    for speakerList in debate['speakerLists']:
-                        if speakerList[0] == speaker:
-                            speaker_aliases = speakerList
-                            success = True
-
-            if not success:
-                print speaker
-                raise Exception('Speaker names aren\'t working')
+            if not [True for text in ['participants', 'moderators', 'candidates'] if speaker.lower() == text]:
+                speaker_aliases = []
+                for debate in all_speakers_in:
+                    if debate['date'] == debate_date_iso and debate['description'] == debate_name:
+                        for speakerList in debate['speakerLists']:
+                            if speakerList[0] == speaker:
+                                speaker_aliases = speakerList
+                                break
+            try:
+                assert speaker_aliases
+            except:
+                raise Exception('Some problem with the speaker names file.')
 
         # If the speaker is 'candidates' (non-case-sensitive),
         # this is metadata and we should move it outside the main body.
@@ -437,6 +450,7 @@ def process_html_file(html_file):
 
         else:
             speaker_dict = {"speaker": speaker, "text": all_text_of_speaker, "speaker-aliases": speaker_aliases}
+            # TODO fix
             text_by_speakers.append(speaker_dict)
 
     # Create a dictionary which will be written to a file

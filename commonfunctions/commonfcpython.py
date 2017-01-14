@@ -11,7 +11,6 @@ class TranscriptSelector(Selector):
         date = self.xpath("//span[@class='docdate']/text()").extract()
 
         debate_date = cf.list_to_item(date)
-        print debate_date
 
         # The date is not in a useful format, so let's change that.
         # Some uninteresting code to do that is below.

@@ -1,8 +1,7 @@
 import os
 
-def fi():
-    fileslist = os.listdir(os.curdir)
 
+def fi(fileslist=os.listdir(os.curdir)):
     length = 0
 
     imports = []
@@ -20,16 +19,27 @@ def fi():
                     if i.split():
                         if i.split()[0] == j:
                             print i[:-1]
-                            imports.append(i[:-1])
+                            imports.append((i[:-1], f))
+                        if i.split()[0] == 'from':
+                            imports.append(('import ' + i.split()[1] + '.' + i.split()[3], f))
+                            print imports[-1]
     print
     print "The total length of code in the project is " + str(length) + " lines"
     print
     print "Unique imports:"
-    imports = list(set(imports))
     imports.sort()
     for i in imports:
-        if i.split()[1] + '.py' not in fileslist:
-            print i.split()[1]
+        print (i[0].split()[1], i[1])
+
+
+def absdirlist(dir):
+    assert dir in os.listdir(os.curdir)
+    return [os.path.join(dir, x) for x in os.listdir(dir)]
+
 
 if __name__ == '__main__':
-    fi()
+    fl = os.listdir(os.curdir)
+    fl += absdirlist('analysis')
+    fl += absdirlist('commonfunctions')
+    fl += absdirlist('processing')
+    fi(fl)
