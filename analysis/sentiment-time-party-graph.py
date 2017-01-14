@@ -45,17 +45,16 @@ ax.grid(b=False)
 ax.set_axis_bgcolor('white')
 
 labels = ['Republican', 'Democrat']
-colors = ['red', 'blue']
-
+colors = ['#ef8a62', '#67a9cf']
 for labelno, data in enumerate([repNegativeData, demNegativeData]):
     data2 = zip(*data)
-    ax.plot(data2[0], data2[1], label=labels[labelno], lw=2.5)
+    ax.plot(data2[0], data2[1], label=labels[labelno], color=colors[labelno], lw=2.5)
 
 ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in  dictionaries')
 ax.set_title('Negative Sentiment over time in US democratic/republican election debates', y=1.05)
-plt.savefig(os.path.join(root_directory, 'images','analysis-sentiment-time-party-negative.svg'), format='svg')
+plt.savefig(os.path.join(root_directory, 'images', 'analysis-sentiment-time-party-negative.svg'), format='svg')
 
 fig = plt.figure(1)
 ax = fig.gca()
@@ -64,7 +63,7 @@ ax.set_axis_bgcolor('white')
 
 for labelno, data in enumerate([repPositiveData, demPositiveData]):
     data2 = zip(*data)
-    ax.plot(data2[0], data2[1], label=labels[labelno], lw=2.5)
+    ax.plot(data2[0], data2[1], color=colors[labelno], label=labels[labelno], lw=2.5)
 
 ax.legend()
 ax.set_xlabel('Year')

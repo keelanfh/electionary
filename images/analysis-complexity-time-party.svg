@@ -979,7 +979,7 @@ L369.6 249.875
 L399.36 292.014
 L429.12 262.699
 L458.88 266.97
-L488.64 299.959" style="fill:none;stroke:#ff0000;stroke-linecap:square;stroke-width:2.5;"/>
+L488.64 299.959" style="fill:none;stroke:#e24a33;stroke-linecap:square;stroke-width:2.5;"/>
    </g>
    <g id="line2d_24">
     <path clip-path="url(#p7ff5b81e1d)" d="
@@ -994,7 +994,7 @@ L369.6 243.471
 L399.36 287.958
 L429.12 271.843
 L458.88 223.808
-L488.64 281.204" style="fill:none;stroke:#0000ff;stroke-linecap:square;stroke-width:2.5;"/>
+L488.64 281.204" style="fill:none;stroke:#348abd;stroke-linecap:square;stroke-width:2.5;"/>
    </g>
    <g id="patch_3">
     <path d="
@@ -1017,7 +1017,7 @@ M72 388.8
 L72 43.2" style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;"/>
    </g>
    <g id="text_14">
-    <!-- Occurrence of common words in US presidential election campaigns, split by party -->
+    <!-- Occurrence of most common 1000 words in US presidential election campaigns, split by party -->
     <defs>
      <path d="
 M39.4062 66.2188
@@ -1171,7 +1171,7 @@ L18.1094 75.9844
 z
 " id="BitstreamVeraSans-Roman-62"/>
     </defs>
-    <g transform="translate(-2.57625 20.92)scale(0.144 -0.144)">
+    <g transform="translate(36.494609375 20.92)scale(0.11 -0.11)">
      <use xlink:href="#BitstreamVeraSans-Roman-4f"/>
      <use x="78.7109375" xlink:href="#BitstreamVeraSans-Roman-63"/>
      <use x="133.69140625" xlink:href="#BitstreamVeraSans-Roman-63"/>
@@ -1186,72 +1186,82 @@ z
      <use x="603.470703125" xlink:href="#BitstreamVeraSans-Roman-6f"/>
      <use x="664.65234375" xlink:href="#BitstreamVeraSans-Roman-66"/>
      <use x="699.857421875" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="731.64453125" xlink:href="#BitstreamVeraSans-Roman-63"/>
-     <use x="786.625" xlink:href="#BitstreamVeraSans-Roman-6f"/>
-     <use x="847.806640625" xlink:href="#BitstreamVeraSans-Roman-6d"/>
-     <use x="945.21875" xlink:href="#BitstreamVeraSans-Roman-6d"/>
-     <use x="1042.63085938" xlink:href="#BitstreamVeraSans-Roman-6f"/>
-     <use x="1103.8125" xlink:href="#BitstreamVeraSans-Roman-6e"/>
-     <use x="1167.19140625" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="1198.97851562" xlink:href="#BitstreamVeraSans-Roman-77"/>
-     <use x="1280.765625" xlink:href="#BitstreamVeraSans-Roman-6f"/>
-     <use x="1341.94726562" xlink:href="#BitstreamVeraSans-Roman-72"/>
-     <use x="1381.31054688" xlink:href="#BitstreamVeraSans-Roman-64"/>
-     <use x="1444.78710938" xlink:href="#BitstreamVeraSans-Roman-73"/>
-     <use x="1496.88671875" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="1528.67382812" xlink:href="#BitstreamVeraSans-Roman-69"/>
-     <use x="1556.45703125" xlink:href="#BitstreamVeraSans-Roman-6e"/>
-     <use x="1619.8359375" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="1651.62304688" xlink:href="#BitstreamVeraSans-Roman-55"/>
-     <use x="1724.81640625" xlink:href="#BitstreamVeraSans-Roman-53"/>
-     <use x="1788.29296875" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="1820.08007812" xlink:href="#BitstreamVeraSans-Roman-70"/>
-     <use x="1883.55664062" xlink:href="#BitstreamVeraSans-Roman-72"/>
-     <use x="1922.41992188" xlink:href="#BitstreamVeraSans-Roman-65"/>
-     <use x="1983.94335938" xlink:href="#BitstreamVeraSans-Roman-73"/>
-     <use x="2036.04296875" xlink:href="#BitstreamVeraSans-Roman-69"/>
-     <use x="2063.82617188" xlink:href="#BitstreamVeraSans-Roman-64"/>
-     <use x="2127.30273438" xlink:href="#BitstreamVeraSans-Roman-65"/>
-     <use x="2188.82617188" xlink:href="#BitstreamVeraSans-Roman-6e"/>
-     <use x="2252.20507812" xlink:href="#BitstreamVeraSans-Roman-74"/>
-     <use x="2291.4140625" xlink:href="#BitstreamVeraSans-Roman-69"/>
-     <use x="2319.19726562" xlink:href="#BitstreamVeraSans-Roman-61"/>
-     <use x="2380.4765625" xlink:href="#BitstreamVeraSans-Roman-6c"/>
-     <use x="2408.25976562" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="2440.046875" xlink:href="#BitstreamVeraSans-Roman-65"/>
-     <use x="2501.5703125" xlink:href="#BitstreamVeraSans-Roman-6c"/>
-     <use x="2529.35351562" xlink:href="#BitstreamVeraSans-Roman-65"/>
-     <use x="2590.87695312" xlink:href="#BitstreamVeraSans-Roman-63"/>
-     <use x="2645.85742188" xlink:href="#BitstreamVeraSans-Roman-74"/>
-     <use x="2685.06640625" xlink:href="#BitstreamVeraSans-Roman-69"/>
-     <use x="2712.84960938" xlink:href="#BitstreamVeraSans-Roman-6f"/>
-     <use x="2774.03125" xlink:href="#BitstreamVeraSans-Roman-6e"/>
-     <use x="2837.41015625" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="2869.19726562" xlink:href="#BitstreamVeraSans-Roman-63"/>
-     <use x="2924.17773438" xlink:href="#BitstreamVeraSans-Roman-61"/>
-     <use x="2985.45703125" xlink:href="#BitstreamVeraSans-Roman-6d"/>
-     <use x="3082.86914062" xlink:href="#BitstreamVeraSans-Roman-70"/>
-     <use x="3146.34570312" xlink:href="#BitstreamVeraSans-Roman-61"/>
-     <use x="3207.625" xlink:href="#BitstreamVeraSans-Roman-69"/>
-     <use x="3235.40820312" xlink:href="#BitstreamVeraSans-Roman-67"/>
-     <use x="3298.88476562" xlink:href="#BitstreamVeraSans-Roman-6e"/>
-     <use x="3362.26367188" xlink:href="#BitstreamVeraSans-Roman-73"/>
-     <use x="3414.36328125" xlink:href="#BitstreamVeraSans-Roman-2c"/>
-     <use x="3446.15039062" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="3477.9375" xlink:href="#BitstreamVeraSans-Roman-73"/>
-     <use x="3530.03710938" xlink:href="#BitstreamVeraSans-Roman-70"/>
-     <use x="3593.51367188" xlink:href="#BitstreamVeraSans-Roman-6c"/>
-     <use x="3621.296875" xlink:href="#BitstreamVeraSans-Roman-69"/>
-     <use x="3649.08007812" xlink:href="#BitstreamVeraSans-Roman-74"/>
-     <use x="3688.2890625" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="3720.07617188" xlink:href="#BitstreamVeraSans-Roman-62"/>
-     <use x="3783.55273438" xlink:href="#BitstreamVeraSans-Roman-79"/>
-     <use x="3842.73242188" xlink:href="#BitstreamVeraSans-Roman-20"/>
-     <use x="3874.51953125" xlink:href="#BitstreamVeraSans-Roman-70"/>
-     <use x="3937.99609375" xlink:href="#BitstreamVeraSans-Roman-61"/>
-     <use x="3999.27539062" xlink:href="#BitstreamVeraSans-Roman-72"/>
-     <use x="4040.38867188" xlink:href="#BitstreamVeraSans-Roman-74"/>
-     <use x="4079.59765625" xlink:href="#BitstreamVeraSans-Roman-79"/>
+     <use x="731.64453125" xlink:href="#BitstreamVeraSans-Roman-6d"/>
+     <use x="829.056640625" xlink:href="#BitstreamVeraSans-Roman-6f"/>
+     <use x="890.23828125" xlink:href="#BitstreamVeraSans-Roman-73"/>
+     <use x="942.337890625" xlink:href="#BitstreamVeraSans-Roman-74"/>
+     <use x="981.546875" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="1013.33398438" xlink:href="#BitstreamVeraSans-Roman-63"/>
+     <use x="1068.31445312" xlink:href="#BitstreamVeraSans-Roman-6f"/>
+     <use x="1129.49609375" xlink:href="#BitstreamVeraSans-Roman-6d"/>
+     <use x="1226.90820312" xlink:href="#BitstreamVeraSans-Roman-6d"/>
+     <use x="1324.3203125" xlink:href="#BitstreamVeraSans-Roman-6f"/>
+     <use x="1385.50195312" xlink:href="#BitstreamVeraSans-Roman-6e"/>
+     <use x="1448.88085938" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="1480.66796875" xlink:href="#BitstreamVeraSans-Roman-31"/>
+     <use x="1544.29101562" xlink:href="#BitstreamVeraSans-Roman-30"/>
+     <use x="1607.9140625" xlink:href="#BitstreamVeraSans-Roman-30"/>
+     <use x="1671.53710938" xlink:href="#BitstreamVeraSans-Roman-30"/>
+     <use x="1735.16015625" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="1766.94726562" xlink:href="#BitstreamVeraSans-Roman-77"/>
+     <use x="1848.734375" xlink:href="#BitstreamVeraSans-Roman-6f"/>
+     <use x="1909.91601562" xlink:href="#BitstreamVeraSans-Roman-72"/>
+     <use x="1949.27929688" xlink:href="#BitstreamVeraSans-Roman-64"/>
+     <use x="2012.75585938" xlink:href="#BitstreamVeraSans-Roman-73"/>
+     <use x="2064.85546875" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="2096.64257812" xlink:href="#BitstreamVeraSans-Roman-69"/>
+     <use x="2124.42578125" xlink:href="#BitstreamVeraSans-Roman-6e"/>
+     <use x="2187.8046875" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="2219.59179688" xlink:href="#BitstreamVeraSans-Roman-55"/>
+     <use x="2292.78515625" xlink:href="#BitstreamVeraSans-Roman-53"/>
+     <use x="2356.26171875" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="2388.04882812" xlink:href="#BitstreamVeraSans-Roman-70"/>
+     <use x="2451.52539062" xlink:href="#BitstreamVeraSans-Roman-72"/>
+     <use x="2490.38867188" xlink:href="#BitstreamVeraSans-Roman-65"/>
+     <use x="2551.91210938" xlink:href="#BitstreamVeraSans-Roman-73"/>
+     <use x="2604.01171875" xlink:href="#BitstreamVeraSans-Roman-69"/>
+     <use x="2631.79492188" xlink:href="#BitstreamVeraSans-Roman-64"/>
+     <use x="2695.27148438" xlink:href="#BitstreamVeraSans-Roman-65"/>
+     <use x="2756.79492188" xlink:href="#BitstreamVeraSans-Roman-6e"/>
+     <use x="2820.17382812" xlink:href="#BitstreamVeraSans-Roman-74"/>
+     <use x="2859.3828125" xlink:href="#BitstreamVeraSans-Roman-69"/>
+     <use x="2887.16601562" xlink:href="#BitstreamVeraSans-Roman-61"/>
+     <use x="2948.4453125" xlink:href="#BitstreamVeraSans-Roman-6c"/>
+     <use x="2976.22851562" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="3008.015625" xlink:href="#BitstreamVeraSans-Roman-65"/>
+     <use x="3069.5390625" xlink:href="#BitstreamVeraSans-Roman-6c"/>
+     <use x="3097.32226562" xlink:href="#BitstreamVeraSans-Roman-65"/>
+     <use x="3158.84570312" xlink:href="#BitstreamVeraSans-Roman-63"/>
+     <use x="3213.82617188" xlink:href="#BitstreamVeraSans-Roman-74"/>
+     <use x="3253.03515625" xlink:href="#BitstreamVeraSans-Roman-69"/>
+     <use x="3280.81835938" xlink:href="#BitstreamVeraSans-Roman-6f"/>
+     <use x="3342.0" xlink:href="#BitstreamVeraSans-Roman-6e"/>
+     <use x="3405.37890625" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="3437.16601562" xlink:href="#BitstreamVeraSans-Roman-63"/>
+     <use x="3492.14648438" xlink:href="#BitstreamVeraSans-Roman-61"/>
+     <use x="3553.42578125" xlink:href="#BitstreamVeraSans-Roman-6d"/>
+     <use x="3650.83789062" xlink:href="#BitstreamVeraSans-Roman-70"/>
+     <use x="3714.31445312" xlink:href="#BitstreamVeraSans-Roman-61"/>
+     <use x="3775.59375" xlink:href="#BitstreamVeraSans-Roman-69"/>
+     <use x="3803.37695312" xlink:href="#BitstreamVeraSans-Roman-67"/>
+     <use x="3866.85351562" xlink:href="#BitstreamVeraSans-Roman-6e"/>
+     <use x="3930.23242188" xlink:href="#BitstreamVeraSans-Roman-73"/>
+     <use x="3982.33203125" xlink:href="#BitstreamVeraSans-Roman-2c"/>
+     <use x="4014.11914062" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="4045.90625" xlink:href="#BitstreamVeraSans-Roman-73"/>
+     <use x="4098.00585938" xlink:href="#BitstreamVeraSans-Roman-70"/>
+     <use x="4161.48242188" xlink:href="#BitstreamVeraSans-Roman-6c"/>
+     <use x="4189.265625" xlink:href="#BitstreamVeraSans-Roman-69"/>
+     <use x="4217.04882812" xlink:href="#BitstreamVeraSans-Roman-74"/>
+     <use x="4256.2578125" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="4288.04492188" xlink:href="#BitstreamVeraSans-Roman-62"/>
+     <use x="4351.52148438" xlink:href="#BitstreamVeraSans-Roman-79"/>
+     <use x="4410.70117188" xlink:href="#BitstreamVeraSans-Roman-20"/>
+     <use x="4442.48828125" xlink:href="#BitstreamVeraSans-Roman-70"/>
+     <use x="4505.96484375" xlink:href="#BitstreamVeraSans-Roman-61"/>
+     <use x="4567.24414062" xlink:href="#BitstreamVeraSans-Roman-72"/>
+     <use x="4608.35742188" xlink:href="#BitstreamVeraSans-Roman-74"/>
+     <use x="4647.56640625" xlink:href="#BitstreamVeraSans-Roman-79"/>
     </g>
    </g>
    <g id="legend_1">
@@ -1267,7 +1277,7 @@ z
     <g id="line2d_25">
      <path d="
 M413.548 58.9181
-L430.348 58.9181" style="fill:none;stroke:#ff0000;stroke-linecap:square;stroke-width:2.5;"/>
+L430.348 58.9181" style="fill:none;stroke:#e24a33;stroke-linecap:square;stroke-width:2.5;"/>
     </g>
     <g id="line2d_26"/>
     <g id="text_15">
@@ -1317,7 +1327,7 @@ z
     <g id="line2d_27">
      <path d="
 M413.548 76.5319
-L430.348 76.5319" style="fill:none;stroke:#0000ff;stroke-linecap:square;stroke-width:2.5;"/>
+L430.348 76.5319" style="fill:none;stroke:#348abd;stroke-linecap:square;stroke-width:2.5;"/>
     </g>
     <g id="line2d_28"/>
     <g id="text_16">

@@ -47,9 +47,18 @@ def generate_rawgit_img_embed(filepath):
     return "<img src=\"" + generate_rawgit_url(filepath) + "\"/>"
 
 
-if not sys.executable.split('/')[-1] == 'pypy':
+def is_pypy():
+    if sys.executable.split('/')[-1] == 'pypy':
+        return True
+    else:
+        return False
+
+
+if not is_pypy():
     from commonfcpython import *
 else:
     class TranscriptSelector(object):
         def __init__(self, text):
             raise Exception('Switch to CPython interpreter to instantiate TranscriptSelector')
+
+

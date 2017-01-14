@@ -15,14 +15,16 @@ uniqueYears = data['uniqueYears']
 uniquenegativewords = data['uniquenegativewords']
 uniquepositivewords = data['uniquepositivewords']
 
+colors = ['#d8b365', '#5ab4ac']
+
 plt.style.use('ggplot')
 fig = plt.figure(0)
 ax = fig.gca()
 ax.grid(b=False)
 ax.set_axis_bgcolor('white')
 
-ax.plot(uniqueYears, uniquenegativewords, label='negative', color='orange', lw=2.5)
-ax.plot(uniqueYears, uniquepositivewords, label='positive', color='green', lw=2.5)
+ax.plot(uniqueYears, uniquenegativewords, label='negative', color=colors[0], lw=2.5)
+ax.plot(uniqueYears, uniquepositivewords, label='positive', color=colors[1], lw=2.5)
 ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in negative/positive dictionaries')

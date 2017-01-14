@@ -10,6 +10,9 @@ import nltk
 
 from commonfunctions import commonfunctions as cf
 
+if not cf.is_pypy():
+    raise Exception('Change interpreter to pypy')
+
 wnl = nltk.WordNetLemmatizer()
 
 # This code compares the debate transcripts with the 1000 most common nouns used in the (US) English language.

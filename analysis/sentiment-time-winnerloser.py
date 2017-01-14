@@ -10,6 +10,9 @@ import nltk
 
 from commonfunctions import commonfunctions as cf
 
+if not cf.is_pypy():
+    raise Exception('Change interpreter to pypy')
+
 wnl = nltk.WordNetLemmatizer()
 
 root_directory = os.path.dirname(os.path.abspath(os.curdir))
@@ -71,8 +74,8 @@ for winnerloser in ['w', 'l']:
         # Add all the text spoken by speakers to that string
         for speaker in transcript['text_by_speakers']:
             if 'winnerloser' in speaker:
-                if speaker['winnerloser'] == winnerloser or (speaker['winnerloser'] == 'n'
-                                                             and winnerloser == 'l'):
+                if speaker['winnerloser'] == winnerloser or ((speaker['winnerloser'] == 'n' or speaker[
+                        'winnerloser'] == 'd' or speaker['winnerloser'] == 'r') and winnerloser == 'l'):
                     print winnerloser
                     print cf.unicode_to_ascii(transcript['description'])
                     allText += (" " + speaker['text'])
@@ -109,7 +112,8 @@ for winnerloser in ['w', 'l']:
     for uniqueYear in uniqueYears:
 
         transcript_results_for_year = [transcript_result for transcript_result in transcript_results
-                                       if cf.campaign_year_from_year(transcript_result['year']) == uniqueYear]
+                                       if
+                                       cf.campaign_year_from_year(transcript_result['year']) == uniqueYear]
 
         word_count = sum([transcript_result['word_count'] for transcript_result in transcript_results_for_year])
 
