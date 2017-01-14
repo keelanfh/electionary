@@ -1,8 +1,10 @@
 import json
-
+import os
 import matplotlib.pyplot as plt
 
 from commonfunctions import commonfunctions as cf
+
+root_directory = os.path.dirname(os.path.abspath(os.curdir))
 
 months = [None, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
           "November", "December"]
@@ -18,6 +20,8 @@ for candidate in candidates:
         import_filename = 'realDonaldTrumpTweetsResults.json'
         export_filename = 'images/twitter-analysis-sentiment-time-trump.svg'
         username = 'realDonaldTrump'
+
+    export_filename = os.path.join(root_directory, export_filename)
 
     title = 'Positive and negative words in tweets - @' + username
 
@@ -61,7 +65,7 @@ for candidate in candidates:
     ax2.set_axis_bgcolor('white')
 
     labels = ['Negative', 'Positive']
-    colors = ['orange', 'green']
+    colors = ['#d8b365', '#5ab4ac']
     for labelno, data in enumerate([negative_results, positive_results]):
         data2 = zip(*data)
         ax.plot(data2[0], data2[1], label=labels[labelno], color=colors[labelno], lw=2.5)
