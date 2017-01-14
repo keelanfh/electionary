@@ -27,7 +27,7 @@ ax.set_axis_bgcolor('white')
 ax.plot(results[0], results[1], color='gray', lw=2.5)
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in simple word dictionary')
-ax.set_title('Occurrence of simple words in US presidential election campaigns', y=1.05)
+ax.set_title('Occurrence of the most common 1000 words in US presidential election campaigns', y=1.05)
 plt.savefig(os.path.join(root_directory, 'images', 'analysis-complexity-time.svg'), format='svg')
 
 print cf.generate_rawgit_img_embed(os.path.join('images', 'analysis-complexity-time.svg'))
