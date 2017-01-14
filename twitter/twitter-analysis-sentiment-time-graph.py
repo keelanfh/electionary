@@ -64,9 +64,12 @@ for candidate in candidates:
     ax2.grid(b=False)
     ax2.set_axis_bgcolor('white')
 
-    labels = ['Negative', 'Positive']
+    labels = ['negative', 'positive']
     colors = ['#d8b365', '#5ab4ac']
-    for labelno, data in enumerate([negative_results, positive_results]):
+    labels.reverse()
+    colors.reverse()
+
+    for labelno, data in (enumerate([positive_results, negative_results])):
         data2 = zip(*data)
         ax.plot(data2[0], data2[1], label=labels[labelno], color=colors[labelno], lw=2.5)
 

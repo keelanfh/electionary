@@ -5,8 +5,6 @@ import unicodedata
 
 from commonfunctions import commonfunctions as cf
 
-# TODO change this for the winner and loser data
-
 csvfile = 'winnerloser-categorisation.csv'
 
 root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
