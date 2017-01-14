@@ -1,6 +1,7 @@
 import json
 import os
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter, MaxNLocator
 
 from commonfunctions import commonfunctions as cf
 
@@ -8,6 +9,16 @@ root_directory = os.path.dirname(os.path.abspath(os.curdir))
 
 months = [None, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
           "November", "December"]
+
+
+def month_formatter(month_no, useless_value):
+    month_no = int(month_no)
+    assert type(month_no) == int
+    if month_no > 12 or month_no < 1:
+        return ""
+    else:
+        return months[month_no]
+
 print months
 
 candidates = ['Trump', 'Hillary']
@@ -64,6 +75,9 @@ for candidate in candidates:
     ax2.grid(b=False)
     ax2.set_axis_bgcolor('white')
 
+    ax.set_ylim([0.02, 0.09])
+    ax2.set_ylim([0, 1000])
+
     labels = ['negative', 'positive']
     colors = ['#d8b365', '#5ab4ac']
     labels.reverse()
@@ -83,15 +97,8 @@ for candidate in candidates:
     data2 = zip(*tweet_volume)
     ax2.bar(data2[0], data2[1], color='black', alpha=0.1, align='center')
 
-    # print [item.get_text() for item in ax2.get_xticklabels(which='both')]
-    # labels = [int(item.get_text()) for item in ax2.get_xticklabels()]
-    # labels2 = labels
-    # for label in labels:
-    #     if label in months:
-    #         labels2[label] = months[label][0:3]
-    #     else:
-    #         labels2[label] = ""
-    #
-    # ax2.set_xticklabels(labels2)
+    ax.xaxis.set_major_formatter(FuncFormatter(month_formatter))
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 
+    print export_filename
     plt.savefig(export_filename, format='svg')
