@@ -2,9 +2,6 @@ import json
 import os
 from commonfunctions import commonfunctions as cf
 
-
-# TODO maybe normalise all the unicode strings to ASCII strings in transcript-postprocessor.
-
 root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
 directory = os.path.join(root_directory, cf.working_directory)
 

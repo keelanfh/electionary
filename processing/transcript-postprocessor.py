@@ -450,7 +450,6 @@ def process_html_file(html_file):
 
         else:
             speaker_dict = {"speaker": speaker, "text": all_text_of_speaker, "speaker-aliases": speaker_aliases}
-            # TODO fix
             text_by_speakers.append(speaker_dict)
 
     # Create a dictionary which will be written to a file

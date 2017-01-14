@@ -20,8 +20,6 @@ directory = os.path.join(root_directory, cf.working_directory)
 # analysis code is quite slow because of the quantity of data being handled.
 # Some of the code could also be moved out of the for loop to improve speed of running.
 
-# TODO Could be improved, again, removing the interventions of the moderators
-
 # Analysis of the polarity of the transcripts
 # Compares the transcripts with lists of positive and negative words
 # Counts the matches and displays them in a graph
