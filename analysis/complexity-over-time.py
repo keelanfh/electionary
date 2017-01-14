@@ -117,7 +117,7 @@ for uniqueYear in uniqueYears:
     if sum(nounsforyear):
         uniquesimplewords.append(sum(simplewordsforyear)/sum(nounsforyear))
 
-with open('complexity-over-time2.json', 'w') as f:
+with open('complexity-over-time.json', 'w') as f:
     json.dump([[year for year in uniqueYears if not year % 4], uniquesimplewords], f)
 
 # # The graph plots on the Y axis the relative amount of common nouns

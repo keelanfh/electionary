@@ -7,8 +7,16 @@ from commonfunctions import commonfunctions as cf
 
 root_directory = os.path.dirname(os.path.abspath(os.curdir))
 
-with open('complexity-over-time.json', 'r') as f:
+with open('complexity-time-party.json', 'r') as f:
     results = json.load(f)
+
+r, d = [None] * 2
+
+for party in results:
+    if party['party'] == 'r':
+        r = party['data']
+    elif party['party'] == 'd':
+        d = party['data']
 
 # The graph plots on the Y axis the relative amount of common nouns
 
@@ -24,10 +32,14 @@ ax = fig.gca()
 ax.grid(b=False)
 ax.set_axis_bgcolor('white')
 
-ax.plot(results[0], results[1], color='gray', lw=2.5)
+ax.plot(r[0], r[1], color='red', label='Republican', lw=2.5)
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in simple word dictionary')
-ax.set_title('Occurrence of simple words in US presidential election campaigns', y=1.05)
-plt.savefig(os.path.join(root_directory, 'images', 'analysis-complexity-time.svg'), format='svg')
 
-print cf.generate_rawgit_img_embed(os.path.join('images', 'analysis-complexity-time.svg'))
+ax.plot(d[0], d[1], color='blue', label='Democrat', lw=2.5)
+ax.legend()
+
+ax.set_title('Occurrence of common words in US presidential election campaigns, split by party', y=1.05)
+plt.savefig(os.path.join(root_directory, 'images', 'analysis-complexity-time-party.svg'), format='svg')
+
+print cf.generate_rawgit_img_embed(os.path.join('images', 'analysis-complexity-time-party.svg'))
