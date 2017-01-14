@@ -43,6 +43,6 @@ If you want to access the text or other attributes from these JSON files, have a
 
 ### A note on interpreters
 
-You shouldn't have any issues running the code in `processing` through the standard CPython interpreter, but the scripts in the `analysis` section can be very slow to run in CPython. It is highly recommended to install [pypy](http://pypy.org) to run the code 2-3x faster. You will need to install the `nltk` library in `pypy`.
+You shouldn't have any issues running the code in `processing` through the standard CPython interpreter, but the scripts in the `analysis` section can be very slow to run in CPython. It is highly recommended to install [pypy](http://pypy.org) to run the code faster - around 3x faster in simple tests of analysis code, which makes a lot of difference! You will need to install the `nltk` library in `pypy`.
 
 `pypy` is not compatible with `matplotlib`, so graphs cannot be created when using the `pypy` interpreter - you will need to switch back to CPython to produce graphs. The files to produce graphs all end in `-graph.py` so it is easy to switch interpreters and run them separately.

@@ -39,6 +39,14 @@ def unicode_to_ascii(unicode_object):
         'ascii', 'ignore')
 
 
+def generate_rawgit_url(filepath):
+    return "https://rawgit.com/keelanfh/electionary/master/" + filepath
+
+
+def generate_rawgit_img_embed(filepath):
+    return "<img src=\"" + generate_rawgit_url(filepath) + "\"/>"
+
+
 if not sys.executable.split('/')[-1] == 'pypy':
     from commonfcpython import *
 else:

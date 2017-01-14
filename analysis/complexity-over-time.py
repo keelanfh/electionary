@@ -24,7 +24,7 @@ if 'commonwordsenglish.txt' not in os.listdir(os.curdir):
     urllib.urlretrieve(
         'https://gist.githubusercontent.com/deekayen/4148741/raw/01c6252ccc5b5fb307c1bb899c95989a8a284616/1-1000.txt',
         'commonwordsenglish.txt')
-common_words = open("commonwordsenglish.txt").read()
+common_words = open("commonwordsenglish.txt").read().split()
 
 root_directory = os.path.dirname(os.path.abspath(os.curdir))
 directory = os.path.join(root_directory, cf.working_directory)
@@ -44,16 +44,16 @@ for myFile in filesList:
 # Create lists for the years, the simplicity and the number of nouns for each year.
 years = []
 simplicity = []
-nouns = []
+noun_numbers = []
 
 # Go through each transcript
 for transcript in transcripts:
 
     # Get the date - converting the ISO date back into a datetime.date object
     date = cf.iso_to_datetime(transcript['date'])
-    year = date.year
-    years.append(year)
-    print year
+    uniqueYear = date.year
+    years.append(uniqueYear)
+    print uniqueYear
 
     # Create a string for all of the text in the debate
     allText = ""
@@ -71,12 +71,9 @@ for transcript in transcripts:
 
     words = allText.split()
 
-    # Remove short words (shorter than 3 characters) because they dont usually have much meaning
     # Lemmatize the words, removes suffixes (plurals, verb terminations etc)
 
-    long_words = [w for w in words if len(w) > 3]
-
-    text = [wnl.lemmatize(t) for t in long_words]
+    text = [wnl.lemmatize(t) for t in words]
 
     # tag all words in the text according to what type of word they are (nouns, verbs etc)
     # create a string for nouns
@@ -84,13 +81,12 @@ for transcript in transcripts:
 
     text_tagged = nltk.pos_tag(text)
 
-    stringnouns = ""
+    nouns = [word for word, pos in text_tagged
+             if pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS']
+    noun_numbers.append(len(nouns))
 
-    numberofnouns = len([True for word, pos in text_tagged
-                         if pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS'])
-    nouns.append(numberofnouns)
+    simplewords = len([True for word in nouns if word in common_words])
 
-    simplewords = len([True for word in text if word in common_words.split()])
     # count how many of the 1000 common nouns appear on transcripts
     # add it to the list "simplicity"
 
@@ -103,24 +99,26 @@ uniqueYears = list(set(years))
 uniquesimplewords = []
 
 # For each unique year
-for year in uniqueYears:
+for uniqueYear in uniqueYears:
     # Create a list which will contain all simplicity values for a year
     simplewordsforyear = []
+    nounsforyear = []
 
     # Go through all the different years, adding the simplicity to that list and dividing
     # it over the total number of nouns.
 
     for number in range(len(years)):
-        if years[number] == year:
-            simplewordsforyear.append(simplicity[number] / nouns[number])
+        if cf.campaign_year_from_year(years[number]) == uniqueYear:
+            simplewordsforyear.append(simplicity[number])
+            nounsforyear.append(noun_numbers[number])
 
     # Take a simple mean of the simplicity of all texts in a given year.
     # Add this to the list uniquesimplewords, which is paired with the uniqueYears list.
-
-    uniquesimplewords.append(cf.mean(simplewordsforyear))
+    if sum(nounsforyear):
+        uniquesimplewords.append(sum(simplewordsforyear)/sum(nounsforyear))
 
 with open('complexity-over-time2.json', 'w') as f:
-    json.dump([uniqueYears, uniquesimplewords], f)
+    json.dump([[year for year in uniqueYears if not year % 4], uniquesimplewords], f)
 
 # # The graph plots on the Y axis the relative amount of common nouns
 #
