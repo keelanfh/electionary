@@ -48,7 +48,7 @@ class MySpider(BaseSpider):
 
         fileName = debateDate + " " + debateName + ".html"
         
-        
+        os.mkdir(os.path.join(self.root_directory, 'html-files'))
         # The files are then saved to a directory, for access later.
         with open(os.path.join(self.root_directory, 'html-files', fileName), 'w') as f:
             f.write(response.body)
