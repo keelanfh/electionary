@@ -19,7 +19,8 @@ class MySpider(BaseSpider):
     download_delay = 5
 
     # Import the list of URLs to download from - this comes from our earlier file.
-    start_urls = ['http://www.presidency.ucsb.edu/debates.php']
+    with file('urls.json', 'r') as f:
+        start_urls = json.load(f)
     
     # Once again, the allowed domain is set.
     allowed_domains = ['ucsb.edu']
