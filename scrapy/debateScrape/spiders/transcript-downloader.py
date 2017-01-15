@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 
 # Transcript Downloader
 # Downloads from a specified list of URLs

@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # URL Fetcher
 # Fetches a list of URLs to be used by transcript-downloader.py
 
