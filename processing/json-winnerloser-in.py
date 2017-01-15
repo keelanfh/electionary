@@ -5,7 +5,7 @@ import unicodedata
 
 import commonfunctions as cf
 
-csvfile = 'winnerloser-categorisation.csv'
+csvfile = 'json-winnerloser.csv'
 
 root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
 directory = os.path.join(root_directory, cf.working_directory)
@@ -58,9 +58,9 @@ for transcriptno, transcript in enumerate(transcripts):
 for transcript in transcripts:
     print [[x['speaker'], x['winnerloser']] for x in transcript['text_by_speakers'] if 'winnerloser' in x]
 
-if 'transcripts-12thJan' not in os.listdir(root_directory):
-    os.mkdir(os.path.join(root_directory, 'transcripts-12thJan'))
+if 'transcripts' not in os.listdir(root_directory):
+    os.mkdir(os.path.join(root_directory, 'transcripts'))
 
 for fileno, file in enumerate(filesList):
-    with open(os.path.join(root_directory, 'transcripts-12thJan', file), 'w') as f:
+    with open(os.path.join(root_directory, 'transcripts', file), 'w') as f:
         json.dump(transcripts[fileno], f)

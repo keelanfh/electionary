@@ -5,7 +5,7 @@ import os
 
 import unicodedata
 
-working_directory = 'transcripts-12thJan'
+working_directory = 'transcripts'
 
 
 def campaign_year_from_year(year):

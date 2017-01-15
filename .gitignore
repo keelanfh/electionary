@@ -1,5 +1,4 @@
 *.json
-*.csv
 *.txt
 *.html
 *.zip
@@ -12,4 +11,3 @@ xper*
 
 commonfunctions/mysecrets.py
 .DS_Store
-images/complexity-over-time.svg
