@@ -20,8 +20,9 @@ for party in results:
         d = party['data']
 
 # The graph plots on the Y axis the relative amount of common nouns
-
+#
 # This is optional code for linear regression information/lines
+#
 # linr = stats.linregress(results[0], results[1])
 # print stats.linregress(results[0], results[1])
 # x = numpy.linspace(1960,2020,10)
@@ -32,6 +33,9 @@ fig = plt.figure(0)
 ax = fig.gca()
 ax.grid(b=False)
 ax.set_axis_bgcolor('white')
+
+ax.set_xlim([1956, 2020])
+ax.set_xticks(xrange(1960, 2020, 8))
 
 ax.plot(r[0], r[1], label='Republican', lw=2.5)
 ax.set_xlabel('Year')

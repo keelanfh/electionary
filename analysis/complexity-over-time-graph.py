@@ -1,5 +1,6 @@
 import json
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import os
 from scipy import stats
 import numpy
@@ -24,10 +25,19 @@ ax = fig.gca()
 ax.grid(b=False)
 ax.set_axis_bgcolor('white')
 
+ax.set_xlim([1956, 2020])
+ax.set_xticks(xrange(1960, 2020, 8))
+
 ax.plot(results[0], results[1], color='gray', lw=2.5)
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in simple word dictionary')
-ax.set_title('Occurrence of the most common 1000 words in US presidential election campaigns', y=1.05)
+ax.set_title('Occurrence of the most common 1000 words in US presidential election campaigns',
+             fontdict={'fontsize': 12,
+                       'fontweight': mpl.rcParams['axes.titleweight'],
+                       'verticalalignment': 'baseline',
+                       'horizontalalignment': 'center'},
+             y=1.05)
+
 plt.savefig(os.path.join(root_directory, 'images', 'analysis-complexity-time.svg'), format='svg')
 
 print cf.generate_rawgit_img_embed(os.path.join('images', 'analysis-complexity-time.svg'))

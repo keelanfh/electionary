@@ -50,6 +50,9 @@ for labelno, data in enumerate([repNegativeData, demNegativeData]):
     data2 = zip(*data)
     ax.plot(data2[0], data2[1], label=labels[labelno], color=colors[labelno], lw=2.5)
 
+ax.set_xlim([1956, 2020])
+ax.set_xticks(xrange(1960, 2020, 8))
+
 ax.legend()
 ax.set_xlabel('Year')
 ax.set_ylabel('Proportion of words in  dictionaries')
@@ -60,6 +63,9 @@ fig = plt.figure(1)
 ax = fig.gca()
 ax.grid(b=False)
 ax.set_axis_bgcolor('white')
+
+ax.set_xlim([1956, 2020])
+ax.set_xticks(xrange(1960, 2020, 8))
 
 for labelno, data in enumerate([repPositiveData, demPositiveData]):
     data2 = zip(*data)

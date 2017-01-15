@@ -7,19 +7,14 @@ from commonfunctions import commonfunctions as cf
 
 root_directory = os.path.dirname(os.path.abspath(os.curdir))
 
-months = [None, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-          "November", "December"]
 
-
-def month_formatter(month_no, useless_value):
+def month_formatter(month_no, x):
+    months = [None, "January", "February", "March", "April", "May", "June", "July", "August", "September",
+              "October", "November", "December"]
     month_no = int(month_no)
     assert type(month_no) == int
-    if month_no > 12 or month_no < 1:
-        return ""
-    else:
-        return months[month_no]
+    return "" if month_no > 12 or month_no < 1 else months[month_no]
 
-print months
 
 candidates = ['Trump', 'Hillary']
 for candidate in candidates:
@@ -61,27 +56,22 @@ for candidate in candidates:
 
     if candidate == 'Hillary':
         # REMOVE THE FIRST AND LAST POINT...
-        positive_results, negative_results, tweet_volume = positive_results[1:-1], \
-                                                           negative_results[1:-1], tweet_volume[
-                                                                                   1:-1]
+        positive_results, negative_results, tweet_volume = positive_results[1:-1], negative_results[1:-1],\
+                                                           tweet_volume[1:-1]
 
     plt.style.use('ggplot')
-    fig = plt.figure()
-    ax = fig.gca()
+    ax = plt.figure().gca()
     ax.grid(b=False)
     ax.set_axis_bgcolor('white')
 
     ax2 = ax.twinx()
     ax2.grid(b=False)
-    ax2.set_axis_bgcolor('white')
 
     ax.set_ylim([0.02, 0.09])
     ax2.set_ylim([0, 1000])
 
-    labels = ['negative', 'positive']
-    colors = ['#d8b365', '#5ab4ac']
-    labels.reverse()
-    colors.reverse()
+    labels = ['positive', 'negative']
+    colors = ['#5ab4ac', '#d8b365']
 
     for labelno, data in (enumerate([positive_results, negative_results])):
         data2 = zip(*data)
@@ -97,6 +87,7 @@ for candidate in candidates:
     data2 = zip(*tweet_volume)
     ax2.bar(data2[0], data2[1], color='black', alpha=0.1, align='center')
 
+    # Format the month numbers to month names, restrict the ticks to being integers
     ax.xaxis.set_major_formatter(FuncFormatter(month_formatter))
     ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 

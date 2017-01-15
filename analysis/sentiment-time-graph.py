@@ -23,6 +23,10 @@ ax = fig.gca()
 ax.grid(b=False)
 ax.set_axis_bgcolor('white')
 
+# Set x axis labels so they align with campaign years
+ax.set_xlim([1956, 2020])
+ax.set_xticks(xrange(1960, 2020, 8))
+
 ax.plot(uniqueYears, uniquepositivewords, label='positive', color=colors[1], lw=2.5)
 ax.plot(uniqueYears, uniquenegativewords, label='negative', color=colors[0], lw=2.5)
 ax.legend()
