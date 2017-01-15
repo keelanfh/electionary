@@ -32,12 +32,12 @@ speaker_aliases_filename = 'allSpeakersOut.json'
 # SAMPLE
 if runForSample:
     htmlDirectory = os.path.join(root_directory, 'html-files-sample')
-    transcriptDir = os.path.join(root_directory, 'transcripts-sample2')
+    transcriptDir = os.path.join(root_directory, 'transcripts-sample')
 
 # NOT SAMPLE
 else:
     htmlDirectory = os.path.join(root_directory, 'html-files')
-    transcriptDir = os.path.join(root_directory, 'not-interesting')
+    transcriptDir = os.path.join(root_directory, 'transcripts')
 
 # Make the directory to output to, if it doesn't exist already.
 if not os.path.exists(transcriptDir):
