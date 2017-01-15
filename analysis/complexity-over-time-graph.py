@@ -4,7 +4,7 @@ import matplotlib as mpl
 import os
 from scipy import stats
 import numpy
-from commonfunctions import commonfunctions as cf
+import commonfunctions as cf
 
 root_directory = os.path.dirname(os.path.abspath(os.curdir))
 

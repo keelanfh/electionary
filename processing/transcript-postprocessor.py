@@ -14,7 +14,7 @@ import os
 
 import unicodedata
 
-from commonfunctions import commonfunctions as cf
+import commonfunctions as cf
 
 # By default, the program runs only for a sample of files.
 # To change this, change the following to False.

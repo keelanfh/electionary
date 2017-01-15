@@ -11,6 +11,8 @@ import os
 
 
 class MySpider(BaseSpider):
+    root_directory = os.path.dirname(os.path.abspath(os.curdir))
+
     # Name the spider as required by scrapy
     name = "download"
     
@@ -48,5 +50,5 @@ class MySpider(BaseSpider):
         
         
         # The files are then saved to a directory, for access later.
-        with open(os.path.join('html-files', fileName), 'w') as f:
+        with open(os.path.join(self.root_directory, 'html-files', fileName), 'w') as f:
             f.write(response.body)

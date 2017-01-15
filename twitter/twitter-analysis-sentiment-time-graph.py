@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter, MaxNLocator
 
-from commonfunctions import commonfunctions as cf
+import commonfunctions as cf
 
 root_directory = os.path.dirname(os.path.abspath(os.curdir))
 

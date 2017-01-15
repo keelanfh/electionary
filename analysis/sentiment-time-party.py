@@ -8,7 +8,7 @@ from string import punctuation
 
 import nltk
 
-from commonfunctions import commonfunctions as cf
+import commonfunctions as cf
 
 wnl = nltk.WordNetLemmatizer()
 

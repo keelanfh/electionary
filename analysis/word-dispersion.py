@@ -5,7 +5,7 @@ import os
 
 import nltk
 
-from commonfunctions import commonfunctions as cf
+import commonfunctions as cf
 
 wnl = nltk.WordNetLemmatizer()
 from string import punctuation

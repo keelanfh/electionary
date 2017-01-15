@@ -6,7 +6,7 @@
 import os
 import numpy as np
 import shutil
-from commonfunctions import commonfunctions as cf
+import commonfunctions as cf
 
 root_directory = os.path.abspath(os.path.dirname(os.path.abspath(os.curdir)))
 directory = os.path.join(root_directory, cf.working_directory)
