@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Transcript Downloader
 # Downloads from a specified list of URLs
 # Then saves them all to disk
