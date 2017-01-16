@@ -30,8 +30,8 @@ ax.set_xticks(xrange(1960, 2020, 8))
 
 ax.plot(results[0], results[1], color='gray', lw=2.5)
 ax.set_xlabel('Year')
-ax.set_ylabel('Proportion of words in simple word dictionary')
-ax.set_title('Occurrence of the most common 1000 words in US presidential election campaigns',
+ax.set_ylabel('Proportion of nouns in dictionary of 504 most common nouns')
+ax.set_title('Occurrence of the most common 504 nouns in US presidential election campaigns',
              fontdict={'fontsize': 12,
                        'fontweight': mpl.rcParams['axes.titleweight'],
                        'verticalalignment': 'baseline',
