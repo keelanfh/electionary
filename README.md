@@ -15,6 +15,7 @@ Software to download a series of US Presidential election debate transcripts fro
 The project depends on the following external libraries:
 
 `scrapy`, `matplotlib`, `numpy` , `nltk`, which can all be installed through `pip`.
+If you're using Canopy, please install `scrapy` through the Canopy Package Manager rather than though `pip` to avoid compatibility issues.
 
 Optionally, `pypy` can be used to run some of the code faster. `nltk` is a requirement within `pypy` for this code - none of the other external libraries are required in `pypy` and indeed they are not compatible with `pypy`.
 
