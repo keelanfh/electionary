@@ -16,7 +16,7 @@ The project depends on the following external libraries:
 
 `scrapy`, `matplotlib`, `numpy` , `nltk`, which can all be installed through `pip`.
 
-Please note, in testing, we could not get the data collection code to work in Canopy as the `scrapy` dependence was not working. We'd recommend <a href="https://www.continuum.io/downloads">Anaconda</a> (which we used) or plain<a href="https://www.python.org/downloads/">Python</a>.
+Please note, in testing, we could not get the data collection code to work in Canopy as the `scrapy` dependence was not working. We'd recommend <a href="https://www.continuum.io/downloads">Anaconda</a> (which we used) or plain <a href="https://www.python.org/downloads/">Python</a>.
 
 Optionally, `pypy` can be used to run some of the code faster. `nltk` is a requirement within `pypy` for this code - none of the other external libraries are required in `pypy` and indeed they are not compatible with `pypy`.
 

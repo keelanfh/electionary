@@ -42,4 +42,6 @@ if __name__ == '__main__':
     fl += absdirlist('analysis')
     fl += absdirlist('commonfunctions')
     fl += absdirlist('processing')
+    fl += absdirlist('twitter')
+    fl += absdirlist('scrapy')
     fi(fl)
