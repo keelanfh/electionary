@@ -11,7 +11,3 @@ xper*
 
 commonfunctions/mysecrets.py
 .DS_Store
-processing/json-demrep.csv
-processing/json-winnerloser.csv
-split-for-trump.py
-worldcities.csv
