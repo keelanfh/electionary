@@ -1,3 +1,5 @@
+# Simple program to output a text file with all the tweets from each of the two accounts
+
 import json
 import os
 from commonfunctions import commonfunctions as cf

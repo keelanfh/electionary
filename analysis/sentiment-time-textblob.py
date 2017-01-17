@@ -11,6 +11,7 @@ directory = cf.working_directory
 # Just an example of the kind of analysis that can be done
 # This does a sentiment analysis on the text by year using TextBlob
 # Then it creates a graph of that data (sentiment against time)
+# We didn't end up using this in the project in the end
 
 # List all the files in the directory
 filesList = os.listdir(directory)

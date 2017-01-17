@@ -1,3 +1,5 @@
+# Program to collect data about how much code we have, which dependencies we have, etc.
+
 import os
 
 
@@ -40,8 +42,10 @@ def absdirlist(dir):
 if __name__ == '__main__':
     fl = os.listdir(os.curdir)
     fl += absdirlist('analysis')
-    fl += absdirlist('commonfunctions')
     fl += absdirlist('processing')
     fl += absdirlist('twitter')
     fl += absdirlist('scrapy')
+    # don't keep counting those same commonfunctions files
+    fl = [x for x in fl if x.split('/')[-1] != 'commonfunctions.py' and x.split('/')[-1] != 'commonfunctions.py']
+    fl += absdirlist('commonfunctions')
     fi(fl)
