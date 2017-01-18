@@ -36,12 +36,14 @@ The HTML files will be stored in `html-files`.
 ### Processing the transcripts
 
 Now that you have all the HTML downloaded, you can now do any processing from the local files, which will be much faster and will prevent unnecessary load on the host.
-As a starting point, try running `transcript-postprocessor.py`.
+As a starting point, try running `processing/transcript-postprocessor.py`.
 This will produce a transcript for each candidate's speech in an individual debate in JSON format, located in the `transcripts` folder.
 
 ### Analysis
 
 If you want to access the text or other attributes from these JSON files, have a look at `json-import-example.py`.
+
+All of the analysis that we carried out was done using the code in the `analysis` folder, and our visualisations are in the `images` folder. The `twitter` folder contains everything that we did with Twitter data, including data collection and analysis. 
 
 ### A note on interpreters
 
